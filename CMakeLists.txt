@@ -24,7 +24,7 @@ option( PYSWE_AUTO_SET_EPHE_PATH
     ON )
 option( PYSWE_USE_SWEPHELP
     "Build extra functions"
-    ON )
+    OFF )
 
 # Default ephemeris path
 if ( MSVC )

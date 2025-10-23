@@ -4,6 +4,7 @@
 #   This file is part of Pyswisseph.
 #
 #   Copyright (c) 2007-2023 Stanislas Marquis <stan@astrorigin.com>
+#   Copyright (c) 2025 sailorfe <hello@sailorfe.dev>
 #
 #   Pyswisseph is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU Affero General Public License as published by
@@ -18,37 +19,6 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with Pyswisseph.  If not, see <https://www.gnu.org/licenses/>.
 
-# This docstring is published at the PyPI
-# and is used as Distutils long description:
-"""Python extension to AstroDienst Swiss Ephemeris library.
-
-The Swiss Ephemeris is the de-facto standard library for astrological
-calculations. It is a high-precision ephemeris, based upon the DE431
-ephemerides from NASA's JPL, and covering the time range 13201 BC to AD 17191.
-
-::
-
-    >>> import swisseph as swe
-    >>> # first set path to ephemeris files
-    >>> swe.set_ephe_path('/usr/share/sweph/ephe')
-    >>> # find time of next lunar eclipse
-    >>> jd = swe.julday(2007, 3, 3) # julian day
-    >>> res = swe.lun_eclipse_when(jd)
-    >>> ecltime = swe.revjul(res[1][0])
-    >>> print(ecltime)
-    (2007, 3, 3, 23.347926892340183)
-    >>> # get ecliptic position of asteroid 13681 "Monty Python"
-    >>> jd = swe.julday(2008, 3, 21)
-    >>> xx, rflags = swe.calc_ut(jd, swe.AST_OFFSET+13681)
-    >>> # print longitude
-    >>> print(xx[0])
-    0.09843983166646618
-
-:Documentation: https://astrorigin.com/pyswisseph
-:Repository: https://github.com/astrorigin/pyswisseph
-
-"""
-
 import sys
 
 if len(sys.argv) > 1 and sys.argv[1] in ('config', 'clean'):
@@ -57,17 +27,6 @@ if len(sys.argv) > 1 and sys.argv[1] in ('config', 'clean'):
 import os.path
 from setuptools import setup, Extension
 from glob import glob
-
-# Pyswisseph version string
-# Our version string gets the version of the swisseph library (X.XX.XX)
-# and our increment as suffix (.X), plus an eventual pre-release tag (.devX).
-#
-# Note about Github Actions:
-# Each push tagged with vX.XX.XX.X triggers a stable release on PyPI.
-# Each push tagged with vX.XX.XX.X.devX triggers a pre-release on PyPI.
-# Do not forget to: increment version string right here, and modify file
-# pyswisseph.c (PYSWISSEPH_VERSION).
-VERSION = '2.10.03.2'
 
 # Corresponding swisseph version string (normalized for pkg-config)
 swe_version = '2.10.3'
@@ -78,7 +37,8 @@ swe_version = '2.10.3'
 swe_detection = True
 
 # Include additional functions and constants (contrib submodule)
-use_swephelp = True
+# Stripped out for pysweph community fork
+use_swephelp = False
 
 # Sqlite3 detection
 # Set to True to try and find libsqlite3-dev in system.
@@ -88,11 +48,11 @@ sqlite3_detection = True
 
 # Compile flags
 cflags = []
-if sys.platform in ['win32', 'win_amd64']: # Windows
+if sys.platform in ['win32', 'win_amd64']:  # Windows
     cflags.append('-D_CRT_SECURE_NO_WARNINGS')
-elif sys.platform == 'darwin': # OSX
+elif sys.platform == 'darwin':  # OSX
     cflags.append('-Wno-error=unused-command-line-argument-hard-error-in-future')
-else: # Linux etc
+else:  # Linux etc
     pass
 
 # Link flags
@@ -108,16 +68,15 @@ if swe_detection or (use_swephelp and sqlite3_detection):
         import subprocess
         try:
             subprocess.check_output(['pkg-config'], stderr=subprocess.STDOUT)
-        except AttributeError: # Python < 2.7
+        except AttributeError:  # Python < 2.7
             print('Python < 2.7, skipping pkg-config')
     except subprocess.CalledProcessError:
         has_pkgconfig = True
         print('Found pkg-config')
     except OSError:
         print('pkg-config not found')
-    except ImportError: # Python < 2.4
+    except ImportError:  # Python < 2.4
         print('Python < 2.4, skipping pkg-config')
-    #
 
 # Find libswe-dev
 libswe_found = False
@@ -147,9 +106,8 @@ if has_pkgconfig and swe_detection:
         print('pkg-config has not found libswe-dev '+swe_version)
     except ValueError:
         print('pkg-config found version '+out+', but not '+swe_version)
-    #
 
-if not libswe_found: # using internal libswe
+if not libswe_found:  # using internal libswe
     print('Using internal libswe')
     swe_includes = ['libswe']
     swe_sources = [
@@ -168,7 +126,6 @@ if not libswe_found: # using internal libswe
         'libswe/swemptab.h',
         'libswe/swenut2000a.h',
         'libswe/sweph.h',
-        #'libswe/swedll.h',
         'libswe/swejpl.h',
         'libswe/sweodef.h',
         'libswe/swephexp.h',
@@ -196,9 +153,8 @@ if has_pkgconfig and use_swephelp and sqlite3_detection:
         print('pkg-config has found libsqlite3-dev')
     except subprocess.CalledProcessError:
         print('pkg-config has not found libsqlite3-dev')
-    #
 
-if use_swephelp and not sqlite3_found: # using internal sqlite3
+if use_swephelp and not sqlite3_found:  # using internal sqlite3
     print('Using internal sqlite3')
     sqlite3_defines = [
         ('SQLITE_DEFAULT_AUTOVACUUM', 1),
@@ -262,36 +218,11 @@ swemodule = Extension(
     include_dirs = includes,
     libraries = libraries,
     sources = sources
-    )
+)
 
+# Minimal setup() call - metadata now in pyproject.toml
 setup(
-    name = 'pyswisseph',
-    version = VERSION,
-    description = 'Python extension to the Swiss Ephemeris',
-    long_description = __doc__,
-    long_description_content_type = 'text/x-rst',
-    author = 'Stanislas Marquis',
-    author_email = 'stan@astrorigin.com',
-    url = 'https://astrorigin.com/pyswisseph',
-    download_url = 'https://pypi.org/project/pyswisseph',
-    classifiers = [
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
-        'Intended Audience :: Religion',
-        'License :: OSI Approved :: GNU Affero General Public License v3',
-        'Programming Language :: C',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 3',
-        'Topic :: Religion',
-        'Topic :: Scientific/Engineering :: Astronomy',
-        'Topic :: Software Development :: Libraries :: Python Modules'
-        ],
-    keywords = 'Astrology Ephemeris Swisseph',
-    ext_modules = [swemodule],
-    setup_requires = ['wheel'],
-    python_requires = '>=3.5',
-    test_suite = 'tests'
-    )
+    ext_modules = [swemodule]
+)
 
 # vi: set fenc=utf-8 ff=unix et sw=4 ts=4 sts=4 :

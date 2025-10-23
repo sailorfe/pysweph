@@ -2,6 +2,7 @@
     This file is part of Pyswisseph.
 
     Copyright (c) 2007-2023 Stanislas Marquis <stan@astrorigin.com>
+    Copyright (c) 2025 sailorfe <hello@sailorfe.dev>
 
     Pyswisseph is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -49,8 +50,9 @@
 #endif
 
 /* Wether to build swephelp functions */
+/* Set to 0 for pysweph community fork */
 #ifndef PYSWE_USE_SWEPHELP
-#define PYSWE_USE_SWEPHELP      1
+#define PYSWE_USE_SWEPHELP      0
 #endif
 
 /* Dont modify below */

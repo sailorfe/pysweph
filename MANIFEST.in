@@ -1,8 +1,8 @@
 include CMakeLists.txt
 include LICENSE.txt
 include Makefile
-include README.rst
+include README.md
+include pyproject.toml
 graft docs
 graft libswe
-graft swephelp
 graft tests
