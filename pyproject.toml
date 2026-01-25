@@ -1,3 +1,44 @@
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "pysweph"
+version = "2.10.3.3"
+description = "Community fork of Pyswisseph, a Python extension to the Swiss Ephemeris"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "AGPL-3.0-or-later"
+authors = [
+    {name = "Stanislas Marquis", email = "stan@astrorigin.com"},
+]
+maintainers = [
+    {name = "sailorfe", email = "hello@sailorfe.dev"},
+]
+keywords = ["astrology", "ephemeris", "swisseph", "astronomy"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Religion",
+    "Programming Language :: C",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Religion",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://sailorfe.github.io/pysweph"
+Documentation = "https://sailorfe.github.io/pysweph"
+Repository = "https://github.com/sailorfe/pysweph"
+Issues = "https://github.com/sailorfe/pysweph/issues"
+"Original Project" = "https://github.com/astrorigin/pyswisseph"
+
+[tool.setuptools]
+packages = []

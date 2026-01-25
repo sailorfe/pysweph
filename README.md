@@ -1,109 +1,71 @@
-# pyswisseph
+# pysweph
 
-This is the Python extension to the Swiss Ephemeris by Astrodienst.
+Modern Python bindings for the [Swiss Ephemeris](https://www.astro.com/swisseph/swephinfo_e.htm), a high-precision astronomical computation library for astrology developed and maintained since 1997.
 
-The Swiss Ephemeris is the de-facto standard library for astrological calculations. It is a high-precision ephemeris, based up on the DE431 ephemerides from NASA's Jet Propulsion Laboratory (JPL), and covering the time range 13201 BC to AD 17191.
+`pysweph` continues the work of [astrorigin/pyswisseph](https://github.com/astrorigin/pyswisseph) with updated documentation, bug fixes, and ongoing community maintenance.
 
-## Usage Examples
+## Background
 
-### Quickstart (PyPI)
+In mid-2025, the documentation for Pyswisseph (`astrorigin.com/pyswisseph`) became inaccessible, and the maintainer has been unresponsive to issues and pull requests. This fork, `pysweph`, aims to keep the Python interface stable, documented, and installable for users who rely on it.
 
-For most standard calculations (Sun, Moon, Planets), you do not need to manually set the ephemeris path, as necessary data files are included with the PyPI distribution.
+## Upstream and scope
 
-This example shows how to calculate the **Sun's ecliptic longitude** by first converting the date to a Julian day:
+`pysweph` links directly to the official [Swiss Ephemeris C library](https://github.com/aloistr/swisseph) maintained by Alois Treindl and Astrodienst.
 
-```python
+The previous Python package (`astrorigin/pyswisseph`) included Stanislas Marquis' (astrorigin's) auxiliary repositories (`[swephelp](https://github.com/astrorigin/swephelp)`, `[sqlite3](https://github.com/astrorigin/sqlite3)`, and related utilities). These have been intentionally removed in `pysweph` to reduce complexity and depend only on the canonical Swiss Ephemeris source.
+
+## What's new in pysweph
+
+- Full documentation rebuild using Sphinx and MyST Markdown, following the Diataxis framework
+- Regenerated API reference directly from Python docstrings
+- Original tutorials and conceptual guides.
+- Bug fixes improving error handling in `swe.calc()` functions and `swe.deltat_ex`
+- Continuous integration and Github Pages documentation hosting
+- Compatible with the upstream Swiss Ephemeris C library
+
+You can browse the documentation here: [https://sailorfe.github.io/pysweph](https://sailorfe.github.io/pysweph).
+
+### Development status
+
+To fix critical bugs in the C-FFI layer and align with the upstream Swiss Ephemeris, the legacy test suite has been deprecated. We are currently rewriting the test suite from the ground up to ensure 100% parity with the upstream C outputs.
+
+- [ ] **Core test suite rewrite:** In progress.
+- [x] **C-FFI bug fixes:** Completed.
+
+## Installation
+
+`pyswisseph` is available directly from [PyPI](https://pypi.org/project/pysweph).
+
+```sh
+uv pip install pysweph
+# or
+pip install pysweph
+```
+
+`pysweph` is a drop-in replacement for `pyswisseph`. As long as you uninstall `pyswisseph` from any existing project first, your import should still be
+
+```py
 import swisseph as swe
-from datetime import datetime, timezone
-
-# 1. Define a day and convert it to Julian day (JD)
-date = datetime(1997, 9, 30, 14, 0, 0, tzinfo=timezone.utc)
-jd_ut, jd_tt = swe.utc_to_jd(
-    date.year,
-    date.month,
-    date.day,
-    date.hour,
-    date.minute,
-    date.second
-)
-
-# 2. Calculate the position of the Sun (swe.SUN)
-coords, flags = swe.calc_ut(jd_tt, swe.SUN)
-longitude = coords[0]
-
-# 3. Print the results
-print(f"Julian day: {jd}")
-print(f"Sun Ecliptic Longitude (DD): {longitude}")
-
-# Output:
-# Julian day: 2450722.0833377214
-# Sun Ecliptic Longitude (DD): 187.44207682576493
 ```
 
-### Advanced Usage
+## Versioning
 
-For advanced usage, including calculating asteroids or historical eclipses, you may need to download the full ephemeris files and use `swe.set_ephe_path()`.
+This project follows the versioning scheme: `<swe_major>.<swe_minor>.<swe_patch>.<wrapper_increment>`
 
-```python
-import swisseph as swe
+- The first three numbers match the Swiss Ephemeris C library version.
+- The fourth number increments for Python wrapper changes.
+- Current C library version: 2.10.3 (released 2022).
 
-# 1. Set path to ephemeris files
-swe.set_ephe_path('/usr/share/sweph/ephe')
+`pysweph` starts from `pyswisseph==2.10.3.2`. The first release of this fork is `2.10.3.3`.
 
-# 2. Find time of next lunar eclipse
-jd = swe.julday(2007, 3, 3) # julian day
-res = swe.lun_eclipse_when(jd)
-ecltime = swe.revjul(res[1][0])
-print(ecltime)
-# Output: (2007, 3, 3, 23.347926892340183)
-
-# 3. Get ecliptic position of asteroid 13681 "Monty Python"
-jd = swe.julday(2008, 3, 21)
-xx, rflags = swe.calc_ut(jd, swe.AST_OFFSET+13681)
-print(xx[0])
-# Output: 0.09843983166646618
-```
-
-## Links
-
-- **Pyswisseph docs**: [https://astrorigin.com/pyswisseph](https://astrorigin.com/pyswisseph)
-- **PyPI**: [https://pypi.org/project/pyswisseph](https://pypi.org/project/pyswisseph)
-- **Astrodienst**: [https://astro.com/swisseph/swephinfo_e.htm](https://astro.com/swisseph/swephinfo_e.htm)
-
-## Source code
-
-Clone the GitHub repository with the command
-
-```bash
-git clone --recurse-submodules https://github.com/astorigin/pyswisseph
-```
-
-## Licensing
-
-The Pyswisseph package adopts the GNU Affero Public License version 3. See the `LICENSE.txt` file.
-
-The original swisseph library is distributed under a dual licensing system: GNU Affero General Public License, or Swiss Ephemeris Professional License. For more information, see file `libswe/LICENSE`.
-
-## Test Suite
-
-For now, the tests can be run with the standard `python3 setup.py test` command. For them to pass successfully, you need a basic set of ephemerides files installed somewhere on your system:
-
-- `seas_18.se1`
-- `sefstars.txt`
-- `semo_18.se1`
-- `sepl_18.se1`
-
-All downloadable from [https://github.com/aloistr/swisseph/tree/master/ephe](https://github.com/aloistr/swisseph/tree/master/ephe).
-
-The path to the directory containing those files must be indicated in the environment variable `SE_EPHE_PATH`.
-
-For example, on a system with the `env` command, you can do:
-
-```bash
-env SE_EPHE_PATH="/usr/share/sweph/ephe" python3 setup.py test
-```
+If the original maintainer of `pyswisseph` returns, this project will coordinate or merge changes as appropriate.
 
 ## Credits
 
-- **Author**: Stanislas Marquis, [stan@astrorigin.com](mailto:stan@astrorigin.com)
-- **PyPI/CI**: Jonathan de Jong, [jonathan@automatia.nl](mailto:jonathan@automatia.nl)
+- **Alois Treindl**, creator of the Swiss Ephemeris
+- **Stanislas Marquis**, author of the original Python bindings (`pyswisseph`)
+- **sailorfe**, maintainer of `pysweph` continuation
+
+## License
+
+`pysweph` is licensed under the GNU Affero General Public License version 3, whose text you can read at [LICENSE](./LICENSE).
