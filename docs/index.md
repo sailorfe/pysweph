@@ -1,8 +1,8 @@
-# pyswisseph
+# pysweph
 
-`pyswisseph` is a Python wrapper for the [Swiss Ephemeris](https://www.astro.com/swisseph/swephinfo_e.htm), a high-precision astrological calculation library.
+`pysweph` is a community fork of the original [`pyswisseph`](https://github.com/astorigin/pyswisseph) Python wrapper for the [Swiss Ephemeris](https://www.astro.com/swisseph/swephinfo_e.htm), a high-precision astrological calculation library.
 
-**New to pyswisseph?** Start with [Installation](installation.md) and [Quickstart](quickstart.md).
+**New to pysweph?** Start with [Installation](installation.md) and [Quickstart](quickstart.md).
 
 **Building an astrology app?** Check out the [Tutorials](tutorials/index.md).
 
@@ -30,4 +30,4 @@ Original Swiss Ephemeris documentation is copyright **Astrodienst AG** 1997-2022
 
 ## Contributing
 
-Found an issue or want to improve these docs? Visit the [GitHub repository](https://github.com/astrorigin/pyswisseph).
+Found an issue or want to improve these docs? Visit the [GitHub repository](https://github.com/sailorfe/pysweph).

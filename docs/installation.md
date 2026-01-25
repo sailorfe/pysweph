@@ -2,7 +2,7 @@
 
 ## System requirements (C build tools)
 
-pyswisseph is a Python wrapper for a C library and requires a C compiler and development headers to be installed on your system.
+pysweph is a Python wrapper for a C library and requires a C compiler and development headers to be installed on your system.
 
 | OS                    | Command                                                                                   |
 | --------------------- | ----------------------------------------------------------------------------------------- |
@@ -14,20 +14,20 @@ pyswisseph is a Python wrapper for a C library and requires a C compiler and dev
 
 ## PyPI installation
 
-pyswisseph is published to [PyPI](https://pypi.org/project/pyswisseph).
+pysweph is published to [PyPI](https://pypi.org/project/pysweph).
 
 ### Using `uv` (recommended)
 
-If you're adding pyswisseph to a project:
+If you're adding pysweph to a project:
 ```bash
-uv add pyswisseph
+uv add pysweph
 ```
 
 Or installing in a virtual environment:
 ```bash
 uv venv
 source .venv/bin/activate   # On Windows: .venv\Scripts\activate
-uv pip install pyswisseph
+uv pip install pysweph
 ```
 
 ### Using `pip`
@@ -35,7 +35,7 @@ uv pip install pyswisseph
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate   # On Windows: .venv\Scripts\Activate
-pip install pyswisseph
+pip install pysweph
 ```
 
 ### Verify installation

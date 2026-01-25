@@ -3,11 +3,11 @@ import sys
 
 sys.path.insert(0, os.path.abspath('..'))
 
-project = 'Pyswisseph'
-copyright = '2007-2025, Pyswisseph authors and contributors'
-author = 'Pyswisseph Authors and Documentation Contributors'
-version = '2.10.02.0-dev'
-release = '2.10.02.0-dev'
+project = 'pysweph'
+copyright = '2007-23 Pyswisseph Authors, 2025-26 pysweph Contributors'
+author = 'pysweph Contributors (formerly Pyswisseph)'
+version = '2.10.3.3'
+release = '2.10.3.3'
 
 extensions = [
     'myst_parser',
@@ -37,8 +37,8 @@ html_theme_options = {
         "logo": "material/orbit",
         "repo": "fontawesome/brands/github",
     },
-    "repo_url": "https://github.com/sailorfe/pyswisseph/",
-    "repo_name": "pyswisseph",
+    "repo_url": "https://github.com/sailorfe/pysweph/",
+    "repo_name": "pysweph",
     "toc_title": "On this page",
     "toc_title_is_page_title": False,
     "palette": [

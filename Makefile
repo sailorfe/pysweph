@@ -35,6 +35,7 @@ test:
 
 BUILD_DIR := docs/_build
 SPHINX_SOURCE_DIR := docs/
+SPHINX_REQS := docs/requirements.txt
 
 docs: clean-docs
 	@echo "Building pysweph documentation..."
@@ -46,7 +47,7 @@ clean-docs:
 
 live: clean-docs
 	@echo "Starting live documentation server for pysweph..."
-	uv run sphinx-autobuild --host 0.0.0.0 $(SPHINX_SOURCE_DIR) $(BUILD_DIR) --watch $(SPHINX_SOURCE_DIR)
+	uv run --with-requirements $(SPHINX_REQS) sphinx-autobuild --host 0.0.0.0 $(SPHINX_SOURCE_DIR) $(BUILD_DIR) --watch $(SPHINX_SOURCE_DIR)
 
 # -*- empty default target
 

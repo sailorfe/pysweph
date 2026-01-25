@@ -1,6 +1,6 @@
 # Tutorials
 
-The following are practical how-to's to help you get started developing applications with `pyswisseph`.
+The following are practical how-to's to help you get started developing applications with `pysweph`.
 
 ```{toctree}
 :maxdepth: 2
