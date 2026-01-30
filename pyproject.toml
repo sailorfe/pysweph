@@ -1,10 +1,14 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+local_scheme = "no-local-version"
 
 [project]
 name = "pysweph"
-version = "2.10.3.3"
+dynamic = ["version"]
 description = "Community fork of Pyswisseph, a Python extension to the Swiss Ephemeris"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -13,7 +17,7 @@ authors = [
     {name = "Stanislas Marquis", email = "stan@astrorigin.com"},
 ]
 maintainers = [
-    {name = "sailorfe", email = "hello@sailorfe.dev"},
+    {name = "sailorfe", email = "sudopisces@gmail.com"},
 ]
 keywords = ["astrology", "ephemeris", "swisseph", "astronomy"]
 classifiers = [
