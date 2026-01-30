@@ -2,7 +2,7 @@
     This file is part of Pyswisseph.
 
     Copyright (c) 2007-2023 Stanislas Marquis <stan@astrorigin.com>
-    Copyright (c) 2025 sailorfe <hello@sailorfe.dev>
+    Copyright (c) 2025-2026 sailorfe <sudopisces@gmail.com>
 
     Pyswisseph is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -1631,6 +1631,7 @@ static PyObject * pyswe_house_pos FUNCARGS_KEYWDS
 }
 
 /* swisseph.houses */
+
 PyDoc_STRVAR(pyswe_houses__doc__,
 "Calculate houses cusps (UT).\n\n"
 ":Args: float tjdut, float lat, float lon, bytes hsys=b'P'\n\n"
@@ -1639,7 +1640,7 @@ PyDoc_STRVAR(pyswe_houses__doc__,
 " - lon: geographic longitude, in degrees (eastern positive)\n"
 " - hsys: house method identifier (1 byte)\n\n"
 ":Return: (cusps), (ascmc)\n\n"
-" - cusps: tuple of 12 float for cusps (except Gauquelin: 36 float)\n"
+" - cusps: tuple of 13 float for cusps (except Gauquelin: 37 float)\n"
 " - ascmc: tuple of 8 float for additional points\n\n"
 "This function raises swisseph.Error in case of fatal error.");
 
@@ -1657,14 +1658,14 @@ static PyObject * pyswe_houses FUNCARGS_KEYWDS
         return NULL;
     }
     if (hsys == 71) /* Gauquelin houses */
-        return Py_BuildValue("(dddddddddddddddddddddddddddddddddddd)(dddddddd)",
-        cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
+        return Py_BuildValue("(ddddddddddddddddddddddddddddddddddddd)(dddddddd)",
+        cusps[0], cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
         cusps[9],cusps[10],cusps[11],cusps[12],cusps[13],cusps[14],cusps[15],
         cusps[16],cusps[17],cusps[18],cusps[19],cusps[20],cusps[21],cusps[22],
         cusps[23],cusps[24],cusps[25],cusps[26],cusps[27],cusps[28],cusps[29],
         cusps[30],cusps[31],cusps[32],cusps[33],cusps[34],cusps[35],cusps[36],
         ascmc[0],ascmc[1],ascmc[2],ascmc[3],ascmc[4],ascmc[5],ascmc[6],ascmc[7]);
-    return Py_BuildValue("(dddddddddddd)(dddddddd)", cusps[1],cusps[2],
+    return Py_BuildValue("(ddddddddddddd)(dddddddd)", cusps[0], cusps[1],cusps[2],
     cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],cusps[9],cusps[10],
     cusps[11],cusps[12],ascmc[0],ascmc[1],ascmc[2],ascmc[3],ascmc[4],ascmc[5],
     ascmc[6],ascmc[7]);
@@ -1681,7 +1682,7 @@ PyDoc_STRVAR(pyswe_houses_armc__doc__,
 " - hsys: house method identifier (1 byte)\n"
 " - ascmc9: optional parameter for Sunshine house system\n\n"
 ":Return: (cusps), (ascmc)\n\n"
-" - cusps: tuple of 12 float for cusps (except Gauquelin: 36 float)\n"
+" - cusps: tuple of 13 float for cusps (except Gauquelin: 37 float)\n"
 " - ascmc: tuple of 8 float for additional points\n\n"
 "This function raises swisseph.Error in case of fatal error.");
 
@@ -1700,14 +1701,14 @@ static PyObject * pyswe_houses_armc FUNCARGS_KEYWDS
         return NULL;
     }
     if (hsys == 71) /* Gauquelin houses */
-        return Py_BuildValue("(dddddddddddddddddddddddddddddddddddd)(dddddddd)",
-        cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
+        return Py_BuildValue("(ddddddddddddddddddddddddddddddddddddd)(dddddddd)",
+        cusps[0], cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
         cusps[9],cusps[10],cusps[11],cusps[12],cusps[13],cusps[14],cusps[15],
         cusps[16],cusps[17],cusps[18],cusps[19],cusps[20],cusps[21],cusps[22],
         cusps[23],cusps[24],cusps[25],cusps[26],cusps[27],cusps[28],cusps[29],
         cusps[30],cusps[31],cusps[32],cusps[33],cusps[34],cusps[35],cusps[36],
         ascmc[0],ascmc[1],ascmc[2],ascmc[3],ascmc[4],ascmc[5],ascmc[6],ascmc[7]);
-    return Py_BuildValue("(dddddddddddd)(dddddddd)", cusps[1],cusps[2],
+    return Py_BuildValue("(ddddddddddddd)(dddddddd)", cusps[0], cusps[1],cusps[2],
     cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],cusps[9],
     cusps[10],cusps[11],cusps[12],ascmc[0],ascmc[1],ascmc[2],ascmc[3],
     ascmc[4],ascmc[5],ascmc[6],ascmc[7]);
@@ -1724,9 +1725,9 @@ PyDoc_STRVAR(pyswe_houses_armc_ex2__doc__,
 " - hsys: house method identifier (1 byte)\n"
 " - ascmc9: optional parameter for Sunshine house system\n\n"
 ":Return: (cusps), (ascmc), (cuspsspeed), (ascmcspeed)\n\n"
-" - cusps: tuple of 12 float for cusps (except Gauquelin: 36 float)\n"
+" - cusps: tuple of 13 float for cusps (except Gauquelin: 37 float)\n"
 " - ascmc: tuple of 8 float for additional points\n"
-" - cuspsspeed: tuple of 12 float for cusps speeds\n"
+" - cuspsspeed: tuple of 13 float for cusps speeds\n"
 " - ascmcspeed: tuple of 8 float for speeds of additional points\n\n"
 "This function raises swisseph.Error in case of fatal error.");
 
@@ -1745,15 +1746,15 @@ static PyObject * pyswe_houses_armc_ex2 FUNCARGS_KEYWDS
     if (ret < 0)
         return PyErr_Format(pyswe_Error, "swisseph.houses_armc_ex2: %s", err);
     if (hsys == 71) /* Gauquelin sectors */
-        return Py_BuildValue("(dddddddddddddddddddddddddddddddddddd)(dddddddd)"
-                             "(dddddddddddddddddddddddddddddddddddd)(dddddddd)",
-        cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
+        return Py_BuildValue("(ddddddddddddddddddddddddddddddddddddd)(dddddddd)"
+                             "(ddddddddddddddddddddddddddddddddddddd)(dddddddd)",
+        cusps[0],cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
         cusps[9],cusps[10],cusps[11],cusps[12],cusps[13],cusps[14],cusps[15],
         cusps[16],cusps[17],cusps[18],cusps[19],cusps[20],cusps[21],cusps[22],
         cusps[23],cusps[24],cusps[25],cusps[26],cusps[27],cusps[28],cusps[29],
         cusps[30],cusps[31],cusps[32],cusps[33],cusps[34],cusps[35],cusps[36],
         ascmc[0],ascmc[1],ascmc[2],ascmc[3],ascmc[4],ascmc[5],ascmc[6],ascmc[7],
-        cuspspeed[1],cuspspeed[2],cuspspeed[3],cuspspeed[4],cuspspeed[5],
+        cuspspeed[0],cuspspeed[1],cuspspeed[2],cuspspeed[3],cuspspeed[4],cuspspeed[5],
         cuspspeed[6],cuspspeed[7],cuspspeed[8],cuspspeed[9],cuspspeed[10],
         cuspspeed[11],cuspspeed[12],cuspspeed[13],cuspspeed[14],cuspspeed[15],
         cuspspeed[16],cuspspeed[17],cuspspeed[18],cuspspeed[19],cuspspeed[20],
@@ -1762,15 +1763,14 @@ static PyObject * pyswe_houses_armc_ex2 FUNCARGS_KEYWDS
         cuspspeed[31],cuspspeed[32],cuspspeed[33],cuspspeed[34],cuspspeed[35],
         cuspspeed[36],ascmcspeed[0],ascmcspeed[1],ascmcspeed[2],ascmcspeed[3],
         ascmcspeed[4],ascmcspeed[5],ascmcspeed[6],ascmcspeed[7]);
-    return Py_BuildValue("(dddddddddddd)(dddddddd)(dddddddddddd)(dddddddd)",
-    cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
+    return Py_BuildValue("(ddddddddddddd)(dddddddd)(ddddddddddddd)(dddddddd)",
+    cusps[0],cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
     cusps[9],cusps[10],cusps[11],cusps[12],ascmc[0],ascmc[1],ascmc[2],ascmc[3],
-    ascmc[4],ascmc[5],ascmc[6],ascmc[7],cuspspeed[1],cuspspeed[2],cuspspeed[3],
+    ascmc[4],ascmc[5],ascmc[6],ascmc[7],cuspspeed[0],cuspspeed[1],cuspspeed[2],cuspspeed[3],
     cuspspeed[4],cuspspeed[5],cuspspeed[6],cuspspeed[7],cuspspeed[8],
     cuspspeed[9],cuspspeed[10],cuspspeed[11],cuspspeed[12],ascmcspeed[0],
     ascmcspeed[1],ascmcspeed[2],ascmcspeed[3],ascmcspeed[4],ascmcspeed[5],
-    ascmcspeed[6],ascmcspeed[7]);
-}
+    ascmcspeed[6],ascmcspeed[7]);}
 
 /* swisseph.houses_ex */
 PyDoc_STRVAR(pyswe_houses_ex__doc__,
@@ -1782,7 +1782,7 @@ PyDoc_STRVAR(pyswe_houses_ex__doc__,
 " - hsys: house method identifier (1 byte)\n"
 " - flags: ephemeris flag, etc\n\n"
 ":Return: (cusps), (ascmc)\n\n"
-" - cusps: tuple of 12 float for cusps (except Gauquelin: 36 float)\n"
+" - cusps: tuple of 13 float for cusps (except Gauquelin: 37 float)\n"
 " - ascmc: tuple of 8 float for additional points\n\n"
 "This function raises swisseph.Error in case of fatal error.");
 
@@ -1800,14 +1800,14 @@ static PyObject * pyswe_houses_ex FUNCARGS_KEYWDS
         return NULL;
     }
     if (hsys == 71) /* Gauquelin houses */
-        return Py_BuildValue("(dddddddddddddddddddddddddddddddddddd)(dddddddd)",
-        cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
+        return Py_BuildValue("(ddddddddddddddddddddddddddddddddddddd)(dddddddd)",
+        cusps[0], cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
         cusps[9],cusps[10],cusps[11],cusps[12],cusps[13],cusps[14],cusps[15],
         cusps[16],cusps[17],cusps[18],cusps[19],cusps[20],cusps[21],cusps[22],
         cusps[23],cusps[24],cusps[25],cusps[26],cusps[27],cusps[28],cusps[29],
         cusps[30],cusps[31],cusps[32],cusps[33],cusps[34],cusps[35],cusps[36],
         ascmc[0],ascmc[1],ascmc[2],ascmc[3],ascmc[4],ascmc[5],ascmc[6],ascmc[7]);
-    return Py_BuildValue("(dddddddddddd)(dddddddd)", cusps[1],cusps[2],
+    return Py_BuildValue("(ddddddddddddd)(dddddddd)", cusps[0], cusps[1],cusps[2],
     cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],cusps[9],
     cusps[10],cusps[11],cusps[12],ascmc[0],ascmc[1],ascmc[2],ascmc[3],
     ascmc[4],ascmc[5],ascmc[6],ascmc[7]);
@@ -1823,9 +1823,9 @@ PyDoc_STRVAR(pyswe_houses_ex2__doc__,
 " - hsys: house method identifier (1 byte)\n"
 " - flags: ephemeris flag, etc\n\n"
 ":Return: (cusps), (ascmc), (cuspsspeed), (ascmcspeed)\n\n"
-" - cusps: tuple of 12 float for cusps (except Gauquelin: 36 float)\n"
+" - cusps: tuple of 13 float for cusps (except Gauquelin: 37 float)\n"
 " - ascmc: tuple of 8 float for additional points\n"
-" - cuspsspeed: tuple of 12 float for cusps speeds\n"
+" - cuspsspeed: tuple of 13 float for cusps speeds\n"
 " - ascmcspeed: tuple of 8 float for speeds of additional points\n\n"
 "This function raises swisseph.Error in case of fatal error.");
 
@@ -1843,15 +1843,15 @@ static PyObject * pyswe_houses_ex2 FUNCARGS_KEYWDS
     if (ret < 0)
         return PyErr_Format(pyswe_Error, "swisseph.houses_ex2: %s", err);
     if (hsys == 71) /* Gauquelin sectors */
-        return Py_BuildValue("(dddddddddddddddddddddddddddddddddddd)(dddddddd)"
-                             "(dddddddddddddddddddddddddddddddddddd)(dddddddd)",
-        cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
+        return Py_BuildValue("(ddddddddddddddddddddddddddddddddddddd)(dddddddd)"
+                             "(ddddddddddddddddddddddddddddddddddddd)(dddddddd)",
+        cusps[0],cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
         cusps[9],cusps[10],cusps[11],cusps[12],cusps[13],cusps[14],cusps[15],
         cusps[16],cusps[17],cusps[18],cusps[19],cusps[20],cusps[21],cusps[22],
         cusps[23],cusps[24],cusps[25],cusps[26],cusps[27],cusps[28],cusps[29],
         cusps[30],cusps[31],cusps[32],cusps[33],cusps[34],cusps[35],cusps[36],
         ascmc[0],ascmc[1],ascmc[2],ascmc[3],ascmc[4],ascmc[5],ascmc[6],ascmc[7],
-        cuspspeed[1],cuspspeed[2],cuspspeed[3],cuspspeed[4],cuspspeed[5],
+        cuspspeed[0],cuspspeed[1],cuspspeed[2],cuspspeed[3],cuspspeed[4],cuspspeed[5],
         cuspspeed[6],cuspspeed[7],cuspspeed[8],cuspspeed[9],cuspspeed[10],
         cuspspeed[11],cuspspeed[12],cuspspeed[13],cuspspeed[14],cuspspeed[15],
         cuspspeed[16],cuspspeed[17],cuspspeed[18],cuspspeed[19],cuspspeed[20],
@@ -1860,10 +1860,10 @@ static PyObject * pyswe_houses_ex2 FUNCARGS_KEYWDS
         cuspspeed[31],cuspspeed[32],cuspspeed[33],cuspspeed[34],cuspspeed[35],
         cuspspeed[36],ascmcspeed[0],ascmcspeed[1],ascmcspeed[2],ascmcspeed[3],
         ascmcspeed[4],ascmcspeed[5],ascmcspeed[6],ascmcspeed[7]);
-    return Py_BuildValue("(dddddddddddd)(dddddddd)(dddddddddddd)(dddddddd)",
-    cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
+    return Py_BuildValue("(ddddddddddddd)(dddddddd)(ddddddddddddd)(dddddddd)",
+    cusps[0],cusps[1],cusps[2],cusps[3],cusps[4],cusps[5],cusps[6],cusps[7],cusps[8],
     cusps[9],cusps[10],cusps[11],cusps[12],ascmc[0],ascmc[1],ascmc[2],ascmc[3],
-    ascmc[4],ascmc[5],ascmc[6],ascmc[7],cuspspeed[1],cuspspeed[2],cuspspeed[3],
+    ascmc[4],ascmc[5],ascmc[6],ascmc[7],cuspspeed[0],cuspspeed[1],cuspspeed[2],cuspspeed[3],
     cuspspeed[4],cuspspeed[5],cuspspeed[6],cuspspeed[7],cuspspeed[8],
     cuspspeed[9],cuspspeed[10],cuspspeed[11],cuspspeed[12],ascmcspeed[0],
     ascmcspeed[1],ascmcspeed[2],ascmcspeed[3],ascmcspeed[4],ascmcspeed[5],
