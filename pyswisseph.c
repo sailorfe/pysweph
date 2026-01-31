@@ -24,16 +24,20 @@
  *
  *  Python extension to the Swiss Ephemeris
  *
- *  Author/maintainer: Stanislas Marquis <stan@astrorigin.com>
- *  Homepage: https://astrorigin.com/pyswisseph
+ *  Original author: Stanislas Marquis <stan@astrorigin.com>
+ *  Repository: https://github.com/astrorigin/pyswisseph
+ *
+ *  Fork maintainer: sailorfe <sudopisces@gmail.com>
+ *  Fork repository: https://github.com/sailorfe/pysweph
+ *  Fork docuemtnation: https://sailorfe.github.io/pysweph
  *
  *  Swisseph authors: Alois Treindl, Dieter Koch (et al.)
  *  Swisseph homepage: https://www.astro.com/swisseph
  *
  *  Swisseph version: 2.10.03
  */
-
-#define PYSWISSEPH_VERSION      20230604
+#define PYSWEPH_VERSION         20260201
+#define PYSWEPH_RELEASE         "2.10.3.4"
 
 /* Set the default argument for set_ephe_path function */
 #ifndef PYSWE_DEFAULT_EPHE_PATH
@@ -276,10 +280,10 @@ PyDoc_STRVAR(pyswe_calc__doc__,
 " - tjdet: Julian day, Ephemeris Time, where tjdet == tjdut + deltat(tjdut)\n"
 " - planet: body number\n"
 " - flags: bit flags indicating what kind of computation is wanted\n\n"
-":Return: (xx), int retflags\n\n"
+":Return: (xx), int retflags str\n\n"
 " - xx: tuple of 6 float for results\n"
 " - retflags: bit flags indicating what kind of computation was done\n\n"
-" - serr: warning string (empty if no non-fatal warning occurred). This string "
+" - str: warning string (empty if no non-fatal warning occurred). This string "
 "carries important non-fatal messages, such as fallback ephemeris usage, "
 "which must be checked by the user.\n\n"
 "This function can raise swisseph.Error in case of fatal error.");
@@ -307,10 +311,10 @@ PyDoc_STRVAR(pyswe_calc_pctr__doc__,
 " - planet: body number of target object\n"
 " - center: body number of center object\n"
 " - flags: bit flags indicating what kind of computation is wanted\n\n"
-":Return: (xx), int retflags\n\n"
+":Return: (xx), int retflags str\n\n"
 " - xx: tuple of 6 float for results\n"
 " - retflags: bit flags indicating what kind of computation was done\n\n"
-" - serr: warning string (empty if no non-fatal warning occurred). This string "
+" - str: warning string (empty if no non-fatal warning occurred). This string "
 "carries important non-fatal messages, such as fallback ephemeris usage, "
 "which must be checked by the user.\n\n"
 "This function can raise swisseph.Error in case of fatal error.");
@@ -337,10 +341,10 @@ PyDoc_STRVAR(pyswe_calc_ut__doc__,
 " - tjdut: julian day number, universal time\n"
 " - planet: body number\n"
 " - flags: bit flags indicating what kind of computation is wanted\n\n"
-":Return: (xx), int retflags\n\n"
+":Return: (xx), int retflags str\n\n"
 " - xx: tuple of 6 float for results\n"
 " - retflags: bit flags indicating what kind of computation was done\n\n"
-" - serr: warning string (empty if no non-fatal warning occurred). This string "
+" - str: warning string (empty if no non-fatal warning occurred). This string "
 "carries important non-fatal messages, such as fallback ephemeris usage, "
 "which must be checked by the user.\n\n"
 "This function can raise swisseph.Error in case of fatal error.");
@@ -690,9 +694,9 @@ PyDoc_STRVAR(pyswe_deltat_ex__doc__,
 ":Args: float tjdut, int flag\n\n"
 " - tjdut: input time, Julian day number, Universal Time\n"
 " - flag: ephemeris flag, ``FLG_SWIEPH`` ``FLG_JPLEPH`` ``FLG_MOSEPH``\n\n"
-":Return: float deltat, str serr\n\n"
+":Return: float deltat str\n\n"
 " - deltat: returned delta T value\n"
-" - serr: warning string (empty if no warning occurred). This string "
+" - str: warning string (empty if no warning occurred). This string "
 "carries important warnings about the Delta T calculation method, "
 "such as mixed ephemeris file usage, which must be checked by the user.\n\n"
 "Calling this function without a previous call of ``set_ephe_path()`` or "
@@ -6417,14 +6421,15 @@ PyMODINIT_FUNC initswisseph(void)
     PyModule_AddObject(m, "contrib", m2);
 #endif /* PYSWE_USE_SWEPHELP */
 
-    PyModule_AddIntConstant(m, "__version__", PYSWISSEPH_VERSION);
+    PyModule_AddIntConstant(m, "__version__", PYSWEPH_VERSION);
+    PyModule_AddStringConstant(m, "__release__", PYSWEPH_RELEASE);
     PyModule_AddStringConstant(m, "version", swe_version(buf));
 
     if (PyErr_Occurred())
         Py_FatalError("Can't initialize module swisseph!");
 
 #if PYSWE_AUTO_SET_EPHE_PATH
-    /* Automaticly set ephemeris path on module import */
+    /* Automatically set ephemeris path on module import */
     swe_set_ephe_path(PYSWE_DEFAULT_EPHE_PATH);
 #endif /* PYSWE_AUTO_SET_EPHE_PATH */
 

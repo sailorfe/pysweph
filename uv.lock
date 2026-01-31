@@ -11,5 +11,4 @@ resolution-markers = [
 
 [[package]]
 name = "pysweph"
-version = "2.10.3.3"
 source = { editable = "." }

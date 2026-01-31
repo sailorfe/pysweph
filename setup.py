@@ -4,7 +4,7 @@
 #   This file is part of Pyswisseph.
 #
 #   Copyright (c) 2007-2023 Stanislas Marquis <stan@astrorigin.com>
-#   Copyright (c) 2025 sailorfe <hello@sailorfe.dev>
+#   Copyright (c) 2025-2026 sailorfe <sudopisces@gmail.com>
 #
 #   Pyswisseph is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU Affero General Public License as published by
