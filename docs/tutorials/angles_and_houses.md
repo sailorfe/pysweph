@@ -36,7 +36,8 @@ cusps, ascmc = swe.houses(jd_tt, lat, lng, b'P')
 
 # 4. Format and Print results
 # Format each of the first 12 cusps to two decimal places and join them with a comma
-formatted_cusps = ", ".join([f"{c:.2f}" for c in cusps[:12]])
+formatted_cusps = ", ".join([f"{c:.2f}" for c in cusps[1:]])
+# cusps[1:] slices off empty index 0, equivalent to cusps[1:13]
 
 print(f"House cusps (Placidus): [{formatted_cusps}]")
 print(f"Ascendant: {ascmc[0]:.2f}")
@@ -50,11 +51,12 @@ print(f"Midheaven: {ascmc[1]:.2f}")
 
 ### Explanation
 
-The most reliable way to access the angles (Ascendant and Midheaven) is to use the dedicated `ascmc` tuple, as the `cusps` tuple is explicitly limited to the 12 houses.
+The most reliable way to access the angles (Ascendant and Midheaven) is to use the dedicated `ascmc` tuple.
 
-| Tuple name    | Length    | Contents                                                  |
-| ------------- | --------- | --------------------------------------------------------- |
-| `cusps`       | 12        | Cusps for the 1st through 12th houses (index `0` to `11`) |
+
+| Tuple name    | Length    | Contents                                                                      |
+| ------------- | --------- | ----------------------------------------------------------------------------- |
+| `cusps`       | 13        | Cusps for the 1st through 12th houses (index `1` to `12`; index `0` is empty) |
 | `ascmc`       | 8         | Ascendant, Midheaven, Vertex, Equatorial Ascendant, etc.  |
 
 
@@ -65,8 +67,8 @@ The most reliable way to access the angles (Ascendant and Midheaven) is to use t
 
 In **quadrant house systems** like Placidus (used in this example), Campanus, Regiomonatus, or Koch:
 
-- `ascmc[0]` (AC) should be the same as `cusps[0]` (1st house).
-- `ascmc[1]` (MC) may be *theoretically* the same as `cusps[9]` (10th house).
+- `ascmc[0]` (AC) should be the same as `cusps[1]` (1st house).
+- `ascmc[1]` (MC) may be *theoretically* the same as `cusps[10]` (10th house).
 
 It's generally best practice to still use the `ascmc` tuple for the Ascendant and Midheaven, which lie between two cusps in **Whole Sign Houses** and some **equal house systems**.
 

@@ -19,7 +19,8 @@ jd = 2450722.0833377214
 
 # b'W' is the byte for Whole Sign Houses
 cusps, ascmc = swe.houses(jd, lat, lng, b'W')
-print(f"Whole Sign House Cusps: {cusps}")
+print(f"Whole Sign House Cusps: {cusps[1:]}")
+# cusps[1:] slices off empty index 0, equivalent to cusps[1:13]
 
 # Output:
 # Whole Sign House Cusps: (270.0, 300.0, 330.0, 0.0, 30.0, 60.0, 90.0, 120.0, 150.0, 180.0, 210.0, 240.0)
