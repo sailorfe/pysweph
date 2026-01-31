@@ -1,8 +1,10 @@
 # Installation
 
+This is intended for setting up `pysweph` in fresh virtual environments as it *cannot* be installed system-wide. If you are replacing `pyswisseph` in an existing project or virtual environment, refer to the [Migration Guide](concepts/migration_guide.md).
+
 ## System requirements (C build tools)
 
-pysweph is a Python wrapper for a C library and requires a C compiler and development headers to be installed on your system.
+`pysweph` is a Python wrapper for a C library and requires a C compiler and development headers to be installed on your system.
 
 | OS                    | Command                                                                                   |
 | --------------------- | ----------------------------------------------------------------------------------------- |
@@ -14,11 +16,11 @@ pysweph is a Python wrapper for a C library and requires a C compiler and develo
 
 ## PyPI installation
 
-pysweph is published to [PyPI](https://pypi.org/project/pysweph).
+`pyswpeh` is published to [PyPI](https://pypi.org/project/pysweph).
 
 ### Using `uv` (recommended)
 
-If you're adding pysweph to a project:
+If you're adding `pysweph` to a project:
 ```bash
 uv add pysweph
 ```
@@ -54,6 +56,7 @@ To go beyond the bundled data range (e.g., 13000 BCE - 4000 CE) or use extended 
 
 1. **Download** the desired ephemerides from [aloistr/swisseph](https://github.com/aloistr/swisseph/tree/master/ephe).
 2. **Set the path** in your Python code before any calculation:
+
 ```python
 import swisseph as swe
 swe.set_ephe_path("/path/to/your/ephemeris/data")

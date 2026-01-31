@@ -1,6 +1,6 @@
 # API Reference
 
-The functions listed below are automatically generated from the docstrings within the `pyswisseph` module source code.
+The functions listed below are automatically generated from the docstrings within the `pysweph` module source code.
 
 ```{eval-rst}
 

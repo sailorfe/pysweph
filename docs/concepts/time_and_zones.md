@@ -6,7 +6,7 @@ This section explains two methods for converting a user's local time to the nece
 
 ## Method 1: Python's `datetime` with `tzinfo` (Recommended)
 
-This method uses Python's robust time zone system to accurately convert localized time to Universal Time (UTC) before passing it to `pyswisseph`. This approach is necessary because time zones frequently change their offsets due to political reasons and DST.
+This method uses Python's robust time zone system to accurately convert localized time to Universal Time (UTC) before passing it to `pysweph`. This approach is necessary because time zones frequently change their offsets due to political reasons and DST.
 
 1. A user provides a local date/time and a time zone name (e.g., `'America/Los_Angeles'`).
 2. Python's built-in `zoneinfo` (or external libraries like `pytz`) handles the complex historical logic, correctly determining the UTC offset and DST status for that specific moment.

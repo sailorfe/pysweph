@@ -4,7 +4,7 @@ This tutorial combines the concepts from [Zodiacal Position](zodiacal_position.m
 
 ## Define constants and calculate Julian day
 
-We're going to calculate the zodiacal positions of the 10 planets, ascendant and midheaven of [the initial release of the Swiss Ephemeris C library](https://www.astro.com/swisseph/swephchart_e.htm) underlying `pyswisseph`, which has the following birth information:
+We're going to calculate the zodiacal positions of the 10 planets, ascendant and midheaven of [the initial release of the Swiss Ephemeris C library](https://www.astro.com/swisseph/swephchart_e.htm) underlying `pysweph`, which has the following birth information:
 
 - 1997 September 30
 - 4:00 p.m. CEST (UTC+2) -> 14:00 UTC
@@ -69,7 +69,7 @@ We're going to calculate the zodiacal positions of the 10 planets, ascendant and
 
 ### Expected output
 
-If you ran the complete script (`tutorial.py`), the final output should look like this:
+If you ran the complete script ([`tutorial.py`](https://github.com/sailorfe/pysweph/blob/pysweph/examples/tutorial.py)), the final output should look like this:
 
 ```
 --- Chart Positions (System: W) ---
@@ -89,7 +89,7 @@ MC       20 Sco 22 32
 
 ### Tutorial app
 
-You can input your own birth information in the `if __name__ = "__main__"` block of `tutorial_app.py`:
+You can input your own birth information in the `if __name__ = "__main__"` block of [`tutorial_app.py`](https://github.com/sailorfe/pysweph/blob/pysweph/examples/tutorial_app.py):
 
 ```{literalinclude} ../../examples/tutorial_app.py
 :language: python
