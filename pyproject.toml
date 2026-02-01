@@ -36,8 +36,12 @@ Repository = "https://github.com/sailorfe/pysweph"
 Issues = "https://github.com/sailorfe/pysweph/issues"
 "Original Project" = "https://github.com/astrorigin/pyswisseph"
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.setuptools]
+packages = ["swisseph"]
+package-dir = {"" = "src"}
+
+[tools.setuptools.package-data]
+"swisseph" = ["_pysweph.*"]
 
 [dependency-groups]
 docs = [

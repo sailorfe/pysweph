@@ -3,7 +3,7 @@ from cffi import FFI
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.resolve()
-SWE_DIR = BASE_DIR / "swisseph"
+SWE_DIR = BASE_DIR / "libswe"
 
 ffibuilder = FFI()
 
@@ -40,7 +40,7 @@ ffibuilder.set_source("_pysweph",
 )
 
 if __name__ == "__main__":
-    package_dir = BASE_DIR / "pysweph"
+    package_dir = BASE_DIR / "swisseph"
     os.chdir(str(package_dir))
     ffibuilder.compile(target="./_pysweph.*", verbose=True)
     print(f"binary successfully generated in {package_dir}!")

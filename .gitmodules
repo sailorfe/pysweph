@@ -1,3 +1,3 @@
-[submodule "swisseph"]
-	path = src/swisseph
+[submodule "libswe"]
+	path = src/libswe
 	url = https://github.com/aloistr/swisseph.git

@@ -1,8 +1,6 @@
-import pysweph
+import swisseph as swe
 
 def main():
-    swe = pysweph.SwissEph(ephe_path="./ephe")
-
     try:
         sun_calc = swe.calc(2461072.0, 0)
 
