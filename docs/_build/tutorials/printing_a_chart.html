@@ -1,0 +1,932 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="angles_and_houses.html">
+      
+      
+        <link rel="next" href="../api/index.html">
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>Printing a Chart - pysweph 2.10.3.3 documentation</title>
+      
+    
+    
+      
+        
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.acf80fe7f4d9ef9e2.min.css?v=9e56d0d2" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#define-constants-and-calculate-julian-day" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="pysweph 2.10.3.3 documentation" class="md-header__button md-logo" aria-label="pysweph 2.10.3.3 documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.11 1.75C9.3 1.25 10.62 1 12 1c6.08 0 11 4.92 11 11s-4.92 11-11 11S1 18.08 1 12c0-1.38.25-2.7.72-3.92a4.5 4.5 0 0 0 1.73 1.1C3.16 10.07 3 11 3 12a9 9 0 0 0 9 9 9 9 0 0 0 9-9 9 9 0 0 0-9-9c-1 0-1.93.16-2.82.45-.22-.62-.57-1.21-1.07-1.7M4.93 2.93a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-1.11.89-2 2-2M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pysweph 2.10.3.3 documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Printing a Chart
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sailorfe/pysweph/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pysweph
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="pysweph 2.10.3.3 documentation" class="md-nav__button md-logo" aria-label="pysweph 2.10.3.3 documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.11 1.75C9.3 1.25 10.62 1 12 1c6.08 0 11 4.92 11 11s-4.92 11-11 11S1 18.08 1 12c0-1.38.25-2.7.72-3.92a4.5 4.5 0 0 0 1.73 1.1C3.16 10.07 3 11 3 12a9 9 0 0 0 9 9 9 9 0 0 0 9-9 9 9 0 0 0-9-9c-1 0-1.93.16-2.82.45-.22-.62-.57-1.21-1.07-1.7M4.93 2.93a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-1.11.89-2 2-2M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5"/></svg>
+    </a>
+    pysweph 2.10.3.3 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sailorfe/pysweph/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pysweph
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Quickstart</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    <span>Tutorials</span>
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Tutorials</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="zodiacal_position.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Zodiacal Position</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="angles_and_houses.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Angles and Houses</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Printing a Chart</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Printing a Chart</span>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#define-constants-and-calculate-julian-day" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Define constants and calculate Julian day</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculate-ascendant-and-midheaven-longitudes" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Calculate ascendant and midheaven longitudes</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculate-planetary-longitudes" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Calculate planetary longitudes</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convert-longitudes-to-dms" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Convert longitudes to DMS</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-and-print-output" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Format and print output</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format and print output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expected-output" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Expected output</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-app" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Tutorial app</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>API Reference</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Concepts</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#define-constants-and-calculate-julian-day" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Define constants and calculate Julian day</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculate-ascendant-and-midheaven-longitudes" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Calculate ascendant and midheaven longitudes</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculate-planetary-longitudes" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Calculate planetary longitudes</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convert-longitudes-to-dms" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Convert longitudes to DMS</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-and-print-output" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Format and print output</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format and print output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expected-output" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Expected output</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-app" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Tutorial app</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<h1 id="printing-a-chart">Printing a Chart<a class="headerlink" href="#printing-a-chart" title="Link to this heading">¶</a></h1>
+<p>This tutorial combines the concepts from <a class="reference internal" href="zodiacal_position.html"><span class="std std-doc">Zodiacal Position</span></a> (<a class="reference internal" href="../api/index.html#swisseph.calc_ut"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">swe.calc_ut()</span></code></span></a>, <a class="reference internal" href="../api/index.html#swisseph.split_deg"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">swe.split_deg()</span></code></span></a>) and <a class="reference internal" href="angles_and_houses.html"><span class="std std-doc">Angles and Houses</span></a> (<a class="reference internal" href="../api/index.html#swisseph.houses"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">swe.houses()</span></code></span></a>). You can feel free to skip all the commented-out <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements; they’re mostly here for verification, especially if you’re using the Python interpreter in interactive mode.</p>
+<h2 id="define-constants-and-calculate-julian-day">Define constants and calculate Julian day<a class="headerlink" href="#define-constants-and-calculate-julian-day" title="Link to this heading">¶</a></h2>
+<p>We’re going to calculate the zodiacal positions of the 10 planets, ascendant and midheaven of <a class="reference external" href="https://www.astro.com/swisseph/swephchart_e.htm">the initial release of the Swiss Ephemeris C library</a> underlying <code class="docutils literal notranslate"><span class="pre">pysweph</span></code>, which has the following birth information:</p>
+<ul class="simple">
+<li><p>1997 September 30</p></li>
+<li><p>4:00 p.m. CEST (UTC+2) -&gt; 14:00 UTC</p></li>
+<li><p>Zollikon, Switzerland -&gt; 47.33 N, 8.58 E</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">swisseph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">swe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">47.33</span>
+<span class="n">lng</span> <span class="o">=</span> <span class="mf">8.58</span>
+<span class="hll"><span class="n">hsys</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;W&quot;</span>
+</span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1997</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+
+<span class="hll"><span class="n">jd_ut</span><span class="p">,</span> <span class="n">jd_tt</span> <span class="o">=</span> <span class="n">swe</span><span class="o">.</span><span class="n">utc_to_jd</span><span class="p">(</span>
+</span><span class="hll">    <span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">second</span>
+</span><span class="hll"><span class="p">)</span>
+</span>
+<span class="c1"># print(f&quot;Julian day: {jd_tt}&quot;)</span>
+
+<span class="c1"># Output:</span>
+<span class="c1"># Julian day: 2450722.0833377214</span>
+</code></pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">b'W'</span></code>: This is the byte character for <strong>whole sign houses</strong>, but anything works here since cusps are irrelevant to this tutorial.</p></li>
+<li><p><a class="reference internal" href="../api/index.html#swisseph.utc_to_jd"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">swe.utc_to_jd()</span></code></span></a>: Explained in <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quickstart</span></a> that <code class="docutils literal notranslate"><span class="pre">jd_tt</span></code> is more accurate than <code class="docutils literal notranslate"><span class="pre">jd_ut</span></code> given by <code class="docutils literal notranslate"><span class="pre">swe.julday</span></code>.</p></li>
+</ul>
+<h2 id="calculate-ascendant-and-midheaven-longitudes">Calculate ascendant and midheaven longitudes<a class="headerlink" href="#calculate-ascendant-and-midheaven-longitudes" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="hll"><span class="n">cusps</span><span class="p">,</span> <span class="n">ascmc</span> <span class="o">=</span> <span class="n">swe</span><span class="o">.</span><span class="n">houses</span><span class="p">(</span><span class="n">jd_tt</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lng</span><span class="p">,</span> <span class="n">hsys</span><span class="p">)</span>
+</span><span class="n">angles</span> <span class="o">=</span> <span class="p">[</span><span class="n">ascmc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ascmc</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+
+<span class="c1"># print(f&quot;Ascendant: {angles[0]}&quot;)</span>
+<span class="c1"># print(f&quot;Midheaven: {angles[1]}&quot;)</span>
+
+<span class="c1"># Output:</span>
+<span class="c1"># Ascendant: 290.4375225094583</span>
+<span class="c1"># Midheaven: 230.37565140999195</span>
+</code></pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/index.html#swisseph.houses"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">swe.houses()</span></code></span></a>: We only need the tuple at index <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">ascmc</span></code>, and only its first two elements, so we unpack them into a new list called <code class="docutils literal notranslate"><span class="pre">angles</span></code> for later concatenation.</p></li>
+</ul>
+<h2 id="calculate-planetary-longitudes">Calculate planetary longitudes<a class="headerlink" href="#calculate-planetary-longitudes" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="hll"><span class="n">PLANET_IDS</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="hll">    <span class="s2">&quot;Sun&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">SUN</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;Moon&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">MOON</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;Mercury&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">MERCURY</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;Venus&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">VENUS</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;Mars&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">MARS</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;Jupiter&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">JUPITER</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;Saturn&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">SATURN</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;Uranus&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">URANUS</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;Neptune&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">NEPTUNE</span><span class="p">,</span>
+</span><span class="hll">    <span class="s2">&quot;Pluto&quot;</span><span class="p">:</span> <span class="n">swe</span><span class="o">.</span><span class="n">PLUTO</span><span class="p">,</span>
+</span><span class="hll"><span class="p">}</span>
+</span>
+<span class="n">planets</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">id_val</span> <span class="ow">in</span> <span class="n">PLANET_IDS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="hll">    <span class="n">coords</span><span class="p">,</span> <span class="n">flag</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">swe</span><span class="o">.</span><span class="n">calc_ut</span><span class="p">(</span><span class="n">jd_tt</span><span class="p">,</span> <span class="n">id_val</span><span class="p">)</span>    <span class="c1"># returns coordinates, flags, and error messages</span>
+</span><span class="hll">    <span class="n">longitude</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span>    <span class="n">planets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
+
+<span class="c1"># for name, planet in zip(PLANET_IDS.keys(), planets):</span>
+<span class="c1">#    print(f&quot;{name}: {planet}&quot;)</span>
+
+<span class="c1"># Output:</span>
+<span class="c1"># Sun: 187.44207682576493</span>
+<span class="c1"># Moon: 175.3108433704147</span>
+<span class="c1"># Mercury: 177.03456720228542</span>
+<span class="c1"># Venus: 231.25169861097027</span>
+<span class="c1"># Mars: 241.1545702632383</span>
+<span class="c1"># Jupiter: 312.18899266331294</span>
+<span class="c1"># Saturn: 17.660024903370054</span>
+<span class="c1"># Uranus: 304.81633539199663</span>
+<span class="c1"># Neptune: 297.20035476146546</span>
+<span class="c1"># Pluto: 243.46074212504317</span>
+</code></pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PLANET_IDS</span></code>: This dictionary explicitly uses constants, but you can easily loop over a range as described in <a class="reference internal" href="../concepts/bodies.html"><span class="std std-doc">Bodies</span></a>.</p></li>
+<li><p><a class="reference internal" href="../api/index.html#swisseph.calc_ut"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">swe.calc_ut()</span></code></span></a>: <code class="docutils literal notranslate"><span class="pre">coords[0]</span></code> gives ecliptic longitude.</p></li>
+</ul>
+<h2 id="convert-longitudes-to-dms">Convert longitudes to DMS<a class="headerlink" href="#convert-longitudes-to-dms" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">objects</span> <span class="o">=</span> <span class="n">planets</span> <span class="o">+</span> <span class="n">angles</span>
+
+<span class="n">zodiacal</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+<span class="hll">    <span class="n">dms_split</span> <span class="o">=</span> <span class="n">swe</span><span class="o">.</span><span class="n">split_deg</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">swe</span><span class="o">.</span><span class="n">SPLIT_DEG_ZODIACAL</span><span class="p">)</span>
+</span>    <span class="n">zodiacal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dms_split</span><span class="p">)</span>
+
+<span class="c1"># print(zodiacal)</span>
+
+<span class="c1"># Output:</span>
+<span class="c1"># [(7, 26, 31, 0.47657275374280417, 6), (25, 18, 39, 0.03613349287529388, 5), (27, 2, 4, 0.44192822749755756, 5), (21, 15, 6, 0.11499949295648548, 7), (1, 9, 16, 0.45294765787414093, 8), (12, 11, 20, 0.373587926601477, 10), (17, 39, 36, 0.08965213219526191, 0), (4, 48, 58, 0.8074111878721197, 10), (27, 12, 1, 0.2771412 7566374014, 9), (3, 27, 38, 0.6716501554064536, 8), (20, 26, 15, 0.08103404984462159, 9), (20, 22, 32, 0.34507597100455456, 7)]</span>
+
+<span class="n">SIGNS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;Ari&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Tau&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Gem&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Can&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Leo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Vir&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Lib&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sco&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sag&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Cap&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Aqu&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Pis&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/index.html#swisseph.split_deg"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">swe.split_deg()</span></code></span></a>: Described in <a class="reference internal" href="zodiacal_position.html"><span class="std std-doc">Zodiacal Position</span></a>. This tuple is <code class="docutils literal notranslate"><span class="pre">(degrees,</span> <span class="pre">minutes,</span> <span class="pre">seconds,</span> <span class="pre">fraction_of_seconds,</span> <span class="pre">sign</span> <span class="pre">index)</span></code> where <code class="docutils literal notranslate"><span class="pre">sign_index</span></code> is an integer from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">11</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIGNS</span></code>: This tuple makes <code class="docutils literal notranslate"><span class="pre">sign_index</span></code> legible in printing.</p></li>
+</ul>
+<h2 id="format-and-print-output">Format and print output<a class="headerlink" href="#format-and-print-output" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="hll"><span class="n">OBJECT_NAMES</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">PLANET_IDS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;AC&quot;</span><span class="p">,</span> <span class="s2">&quot;MC&quot;</span><span class="p">]</span>
+</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- Chart Positions (System: </span><span class="si">{</span><span class="n">hsys</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s2">) ---&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">dms_split</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">OBJECT_NAMES</span><span class="p">,</span> <span class="n">zodiacal</span><span class="p">):</span>
+<span class="hll">    <span class="n">deg</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">sec</span><span class="p">,</span> <span class="n">f_of_s</span><span class="p">,</span> <span class="n">sign_index</span> <span class="o">=</span> <span class="n">dms_split</span>
+</span><span class="hll">    <span class="n">sign</span> <span class="o">=</span> <span class="n">SIGNS</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">sign_index</span><span class="p">)]</span>
+</span><span class="hll">    <span class="n">position_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">deg</span><span class="si">:</span><span class="s2">2.0f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">sign</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">sec</span><span class="si">:</span><span class="s2">02.0f</span><span class="si">}</span><span class="s2">&quot;</span>
+</span>    <span class="nb">print</span><span class="p">(</span><span class="n">position_string</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OBJECT_NAMES</span></code>: Concatenates the dictionary keys from <code class="docutils literal notranslate"><span class="pre">PLANET_IDS</span></code> with our <code class="docutils literal notranslate"><span class="pre">angles</span></code> list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dms_split</span></code>: This is where we get <code class="docutils literal notranslate"><span class="pre">sign_index</span></code> at index 4.</p></li>
+</ul>
+<h3 id="expected-output">Expected output<a class="headerlink" href="#expected-output" title="Link to this heading">¶</a></h3>
+<p>If you ran the complete script (<a class="reference external" href="https://github.com/sailorfe/pysweph/blob/pysweph/examples/tutorial.py"><code class="docutils literal notranslate"><span class="pre">tutorial.py</span></code></a>), the final output should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Chart</span> <span class="n">Positions</span> <span class="p">(</span><span class="n">System</span><span class="p">:</span> <span class="n">W</span><span class="p">)</span> <span class="o">---</span>
+<span class="n">Sun</span>       <span class="mi">7</span> <span class="n">Lib</span> <span class="mi">26</span> <span class="mi">31</span>
+<span class="n">Moon</span>     <span class="mi">25</span> <span class="n">Vir</span> <span class="mi">18</span> <span class="mi">39</span>
+<span class="n">Mercury</span>  <span class="mi">27</span> <span class="n">Vir</span> <span class="mi">02</span> <span class="mi">04</span>
+<span class="n">Venus</span>    <span class="mi">21</span> <span class="n">Sco</span> <span class="mi">15</span> <span class="mi">06</span>
+<span class="n">Mars</span>      <span class="mi">1</span> <span class="n">Sag</span> <span class="mi">09</span> <span class="mi">16</span>
+<span class="n">Jupiter</span>  <span class="mi">12</span> <span class="n">Aqu</span> <span class="mi">11</span> <span class="mi">20</span>
+<span class="n">Saturn</span>   <span class="mi">17</span> <span class="n">Ari</span> <span class="mi">39</span> <span class="mi">36</span>
+<span class="n">Uranus</span>    <span class="mi">4</span> <span class="n">Aqu</span> <span class="mi">48</span> <span class="mi">58</span>
+<span class="n">Neptune</span>  <span class="mi">27</span> <span class="n">Cap</span> <span class="mi">12</span> <span class="mi">01</span>
+<span class="n">Pluto</span>     <span class="mi">3</span> <span class="n">Sag</span> <span class="mi">27</span> <span class="mi">38</span>
+<span class="n">AC</span>       <span class="mi">20</span> <span class="n">Cap</span> <span class="mi">26</span> <span class="mi">15</span>
+<span class="n">MC</span>       <span class="mi">20</span> <span class="n">Sco</span> <span class="mi">22</span> <span class="mi">32</span>
+</code></pre></div>
+</div>
+<h3 id="tutorial-app">Tutorial app<a class="headerlink" href="#tutorial-app" title="Link to this heading">¶</a></h3>
+<p>You can input your own birth information in the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">=</span> <span class="pre">&quot;__main__&quot;</span></code> block of <a class="reference external" href="https://github.com/sailorfe/pysweph/blob/pysweph/examples/tutorial_app.py"><code class="docutils literal notranslate"><span class="pre">tutorial_app.py</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># User inputs here!</span>
+    <span class="n">BIRTH_DATA</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1997</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
+        <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="mf">35.6897</span><span class="p">,</span>
+        <span class="s2">&quot;lng&quot;</span><span class="p">:</span> <span class="mf">139.69</span><span class="p">,</span>
+        <span class="s2">&quot;hsys&quot;</span><span class="p">:</span> <span class="sa">b</span><span class="s2">&quot;W&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+</code></pre></div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2007-23 Pyswisseph Authors, 2025-26 pysweph Contributors.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+    
+  </body>
+</html>

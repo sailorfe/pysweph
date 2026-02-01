@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "cffi"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pysweph"
+version = "1.0.0"
+description = "Community fork of Pywisseph, a Python wrapper for the Swiss Epphmeris."
+readme = "README.md"
+requires-python = ">=3.13"
+license = "AGPL-3.0-or-later"
+authors = [
+    { name = "sailorfe", email = "hello@sailorfe.dev" },
+]
+dependencies = [
+    "cffi>=2.0.0",
+    "setuptools>=80.10.2",
+]
+keywords = ["astrology", "ephemeris", "swisseph", "astronomy"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Religion",
+    "Programming Language :: C",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Religion",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://sailorfe.github.io/pysweph"
+Documentation = "https://sailorfe.github.io/pysweph"
+Repository = "https://github.com/sailorfe/pysweph"
+Issues = "https://github.com/sailorfe/pysweph/issues"
+"Original Project" = "https://github.com/astrorigin/pyswisseph"
+
+[tool.setuptools.packages.find]
+where = ["src"]

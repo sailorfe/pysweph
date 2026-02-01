@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/pysweph/__init__.py
+src/pysweph/api.py
+src/pysweph.egg-info/PKG-INFO
+src/pysweph.egg-info/SOURCES.txt
+src/pysweph.egg-info/dependency_links.txt
+src/pysweph.egg-info/requires.txt
+src/pysweph.egg-info/top_level.txt
