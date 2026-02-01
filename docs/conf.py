@@ -1,10 +1,11 @@
 import os
 import sys
+sys.path.insert(0, os.path.abspath('../src'))
 
 sys.path.insert(0, os.path.abspath('..'))
 
 project = 'pysweph'
-copyright = '2026 sailorfe'
+copyright = '(c) 2026 sailorfe'
 author = 'sailorfe'
 version = '0.1.0'
 release = '0.1.0'
@@ -13,6 +14,7 @@ extensions = [
     'myst_parser',
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
+    'sphinx.ext.viewcode',
 ]
 
 templates_path = ['_templates']
