@@ -1,2 +1,0 @@
-cffi>=2.0.0
-setuptools>=80.10.2

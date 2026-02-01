@@ -1,7 +1,0 @@
-README.md
-pyproject.toml
-pysweph.egg-info/PKG-INFO
-pysweph.egg-info/SOURCES.txt
-pysweph.egg-info/dependency_links.txt
-pysweph.egg-info/requires.txt
-pysweph.egg-info/top_level.txt

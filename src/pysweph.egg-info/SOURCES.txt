@@ -1,3 +1,4 @@
+LICENSE
 README.md
 pyproject.toml
 src/pysweph/__init__.py
