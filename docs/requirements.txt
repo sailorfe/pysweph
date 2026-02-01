@@ -1,6 +1,0 @@
-myst-parser
-sphinx<9.0.0
-sphinx-autobuild
-sphinx-immaterial
-setuptools
-wheel
