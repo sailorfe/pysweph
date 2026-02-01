@@ -4,7 +4,7 @@ The functions listed below are automatically generated from the docstrings withi
 
 ```{eval-rst}
 
-.. automodule:: swisseph
+.. automodule:: swisseph.api
    :members:
    :undoc-members:
    :show-inheritance:

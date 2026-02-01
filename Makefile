@@ -1,5 +1,5 @@
 werk:
-	nvim src/swisseph/swephexp.h src/build_bridge.py src/pysweph/api.py
+	nvim src/libswe/swephexp.h src/build_bridge.py src/swisseph/api.py
 
 # DOCS
 
