@@ -1,3 +1,6 @@
+clean:
+	rm -rf src/swisseph/__pycache__
+
 werk:
 	nvim src/libswe/swephexp.h src/build_bridge.py src/swisseph/api.py
 

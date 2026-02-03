@@ -570,225 +570,92 @@ static void (*_cffi_call_python_org)(struct _cffi_externpy_s *, char *);
 
 /************************************************************/
 
-#include "swephexp.h"
+
+    #include "swephexp.h"
+    int get_SEFLG_SWIEPH(void) { return SEFLG_SWIEPH; }
+    int get_SE_GREG_CAL(void) { return SE_GREG_CAL; }
+    
 
 /************************************************************/
 
 static void *_cffi_types[] = {
-/*  0 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1), // char *()(char *)
-/*  1 */ _CFFI_OP(_CFFI_OP_POINTER, 64), // char *
-/*  2 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/*  3 */ _CFFI_OP(_CFFI_OP_FUNCTION, 7), // double()(int, int, int, double, int)
-/*  4 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7), // int
+/*  0 */ _CFFI_OP(_CFFI_OP_FUNCTION, 4), // double()(int, int, int, double, int)
+/*  1 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7), // int
+/*  2 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/*  3 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/*  4 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14), // double
 /*  5 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/*  6 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/*  7 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14), // double
-/*  8 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/*  9 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 10 */ _CFFI_OP(_CFFI_OP_FUNCTION, 4), // int()(char *, double, int, double *, char *)
-/* 11 */ _CFFI_OP(_CFFI_OP_NOOP, 1),
-/* 12 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
-/* 13 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 14 */ _CFFI_OP(_CFFI_OP_POINTER, 7), // double *
-/* 15 */ _CFFI_OP(_CFFI_OP_NOOP, 1),
-/* 16 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 17 */ _CFFI_OP(_CFFI_OP_FUNCTION, 4), // int()(double, double, double, int, double *, double *)
-/* 18 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
-/* 19 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
-/* 20 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
-/* 21 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 22 */ _CFFI_OP(_CFFI_OP_NOOP, 14),
-/* 23 */ _CFFI_OP(_CFFI_OP_NOOP, 14),
-/* 24 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 25 */ _CFFI_OP(_CFFI_OP_FUNCTION, 4), // int()(double, int, int, double *, char *)
-/* 26 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
-/* 27 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 28 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 29 */ _CFFI_OP(_CFFI_OP_NOOP, 14),
-/* 30 */ _CFFI_OP(_CFFI_OP_NOOP, 1),
-/* 31 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 32 */ _CFFI_OP(_CFFI_OP_FUNCTION, 4), // int()(double, int, int, int, double *, char *)
-/* 33 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
-/* 34 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 35 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 36 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 37 */ _CFFI_OP(_CFFI_OP_NOOP, 14),
-/* 38 */ _CFFI_OP(_CFFI_OP_NOOP, 1),
-/* 39 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 40 */ _CFFI_OP(_CFFI_OP_FUNCTION, 4), // int()(int, int, int, int, int, double, int, double *, char *)
-/* 41 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 42 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 43 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 44 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 45 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 46 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
-/* 47 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 48 */ _CFFI_OP(_CFFI_OP_NOOP, 14),
-/* 49 */ _CFFI_OP(_CFFI_OP_NOOP, 1),
-/* 50 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 51 */ _CFFI_OP(_CFFI_OP_FUNCTION, 65), // void()(char *)
-/* 52 */ _CFFI_OP(_CFFI_OP_NOOP, 1),
-/* 53 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 54 */ _CFFI_OP(_CFFI_OP_FUNCTION, 65), // void()(double, int, int *, int *, int *, double *)
-/* 55 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
-/* 56 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 57 */ _CFFI_OP(_CFFI_OP_POINTER, 4), // int *
-/* 58 */ _CFFI_OP(_CFFI_OP_NOOP, 57),
-/* 59 */ _CFFI_OP(_CFFI_OP_NOOP, 57),
-/* 60 */ _CFFI_OP(_CFFI_OP_NOOP, 14),
-/* 61 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 62 */ _CFFI_OP(_CFFI_OP_FUNCTION, 65), // void()(void)
-/* 63 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 64 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 2), // char
-/* 65 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 0), // void
+/*  6 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/*  7 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1), // int()(double, double, double, int, double *, double *)
+/*  8 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
+/*  9 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
+/* 10 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
+/* 11 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 12 */ _CFFI_OP(_CFFI_OP_POINTER, 4), // double *
+/* 13 */ _CFFI_OP(_CFFI_OP_NOOP, 12),
+/* 14 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 15 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1), // int()(double, int, int, double *, char *)
+/* 16 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
+/* 17 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 18 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 19 */ _CFFI_OP(_CFFI_OP_NOOP, 12),
+/* 20 */ _CFFI_OP(_CFFI_OP_POINTER, 24), // char *
+/* 21 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 22 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1), // int()(void)
+/* 23 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 24 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 2), // char
 };
 
-static int _cffi_d_swe_calc(double x0, int x1, int x2, double * x3, char * x4)
+static int _cffi_d_get_SEFLG_SWIEPH(void)
 {
-  return swe_calc(x0, x1, x2, x3, x4);
+  return get_SEFLG_SWIEPH();
 }
 #ifndef PYPY_VERSION
 static PyObject *
-_cffi_f_swe_calc(PyObject *self, PyObject *args)
+_cffi_f_get_SEFLG_SWIEPH(PyObject *self, PyObject *noarg)
 {
-  double x0;
-  int x1;
-  int x2;
-  double * x3;
-  char * x4;
-  Py_ssize_t datasize;
-  struct _cffi_freeme_s *large_args_free = NULL;
   int result;
   PyObject *pyresult;
-  PyObject *arg0;
-  PyObject *arg1;
-  PyObject *arg2;
-  PyObject *arg3;
-  PyObject *arg4;
-
-  if (!PyArg_UnpackTuple(args, "swe_calc", 5, 5, &arg0, &arg1, &arg2, &arg3, &arg4))
-    return NULL;
-
-  x0 = (double)_cffi_to_c_double(arg0);
-  if (x0 == (double)-1 && PyErr_Occurred())
-    return NULL;
-
-  x1 = _cffi_to_c_int(arg1, int);
-  if (x1 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  x2 = _cffi_to_c_int(arg2, int);
-  if (x2 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(14), arg3, (char **)&x3);
-  if (datasize != 0) {
-    x3 = ((size_t)datasize) <= 640 ? (double *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(14), arg3, (char **)&x3,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg4, (char **)&x4);
-  if (datasize != 0) {
-    x4 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg4, (char **)&x4,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
 
   Py_BEGIN_ALLOW_THREADS
   _cffi_restore_errno();
-  { result = swe_calc(x0, x1, x2, x3, x4); }
+  { result = get_SEFLG_SWIEPH(); }
   _cffi_save_errno();
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
+  (void)noarg; /* unused */
   pyresult = _cffi_from_c_int(result, int);
-  if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
 #else
-#  define _cffi_f_swe_calc _cffi_d_swe_calc
+#  define _cffi_f_get_SEFLG_SWIEPH _cffi_d_get_SEFLG_SWIEPH
 #endif
 
-static int _cffi_d_swe_calc_pctr(double x0, int x1, int x2, int x3, double * x4, char * x5)
+static int _cffi_d_get_SE_GREG_CAL(void)
 {
-  return swe_calc_pctr(x0, x1, x2, x3, x4, x5);
+  return get_SE_GREG_CAL();
 }
 #ifndef PYPY_VERSION
 static PyObject *
-_cffi_f_swe_calc_pctr(PyObject *self, PyObject *args)
+_cffi_f_get_SE_GREG_CAL(PyObject *self, PyObject *noarg)
 {
-  double x0;
-  int x1;
-  int x2;
-  int x3;
-  double * x4;
-  char * x5;
-  Py_ssize_t datasize;
-  struct _cffi_freeme_s *large_args_free = NULL;
   int result;
   PyObject *pyresult;
-  PyObject *arg0;
-  PyObject *arg1;
-  PyObject *arg2;
-  PyObject *arg3;
-  PyObject *arg4;
-  PyObject *arg5;
-
-  if (!PyArg_UnpackTuple(args, "swe_calc_pctr", 6, 6, &arg0, &arg1, &arg2, &arg3, &arg4, &arg5))
-    return NULL;
-
-  x0 = (double)_cffi_to_c_double(arg0);
-  if (x0 == (double)-1 && PyErr_Occurred())
-    return NULL;
-
-  x1 = _cffi_to_c_int(arg1, int);
-  if (x1 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  x2 = _cffi_to_c_int(arg2, int);
-  if (x2 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  x3 = _cffi_to_c_int(arg3, int);
-  if (x3 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(14), arg4, (char **)&x4);
-  if (datasize != 0) {
-    x4 = ((size_t)datasize) <= 640 ? (double *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(14), arg4, (char **)&x4,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg5, (char **)&x5);
-  if (datasize != 0) {
-    x5 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg5, (char **)&x5,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
 
   Py_BEGIN_ALLOW_THREADS
   _cffi_restore_errno();
-  { result = swe_calc_pctr(x0, x1, x2, x3, x4, x5); }
+  { result = get_SE_GREG_CAL(); }
   _cffi_save_errno();
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
+  (void)noarg; /* unused */
   pyresult = _cffi_from_c_int(result, int);
-  if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
 #else
-#  define _cffi_f_swe_calc_pctr _cffi_d_swe_calc_pctr
+#  define _cffi_f_get_SE_GREG_CAL _cffi_d_get_SE_GREG_CAL
 #endif
 
 static int _cffi_d_swe_calc_ut(double x0, int x1, int x2, double * x3, char * x4)
@@ -830,19 +697,19 @@ _cffi_f_swe_calc_ut(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(14), arg3, (char **)&x3);
+      _cffi_type(12), arg3, (char **)&x3);
   if (datasize != 0) {
     x3 = ((size_t)datasize) <= 640 ? (double *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(14), arg3, (char **)&x3,
+    if (_cffi_convert_array_argument(_cffi_type(12), arg3, (char **)&x3,
             datasize, &large_args_free) < 0)
       return NULL;
   }
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg4, (char **)&x4);
+      _cffi_type(20), arg4, (char **)&x4);
   if (datasize != 0) {
     x4 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg4, (char **)&x4,
+    if (_cffi_convert_array_argument(_cffi_type(20), arg4, (char **)&x4,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -860,182 +727,6 @@ _cffi_f_swe_calc_ut(PyObject *self, PyObject *args)
 }
 #else
 #  define _cffi_f_swe_calc_ut _cffi_d_swe_calc_ut
-#endif
-
-static void _cffi_d_swe_close(void)
-{
-  swe_close();
-}
-#ifndef PYPY_VERSION
-static PyObject *
-_cffi_f_swe_close(PyObject *self, PyObject *noarg)
-{
-
-  Py_BEGIN_ALLOW_THREADS
-  _cffi_restore_errno();
-  { swe_close(); }
-  _cffi_save_errno();
-  Py_END_ALLOW_THREADS
-
-  (void)self; /* unused */
-  (void)noarg; /* unused */
-  Py_INCREF(Py_None);
-  return Py_None;
-}
-#else
-#  define _cffi_f_swe_close _cffi_d_swe_close
-#endif
-
-static int _cffi_d_swe_fixstar(char * x0, double x1, int x2, double * x3, char * x4)
-{
-  return swe_fixstar(x0, x1, x2, x3, x4);
-}
-#ifndef PYPY_VERSION
-static PyObject *
-_cffi_f_swe_fixstar(PyObject *self, PyObject *args)
-{
-  char * x0;
-  double x1;
-  int x2;
-  double * x3;
-  char * x4;
-  Py_ssize_t datasize;
-  struct _cffi_freeme_s *large_args_free = NULL;
-  int result;
-  PyObject *pyresult;
-  PyObject *arg0;
-  PyObject *arg1;
-  PyObject *arg2;
-  PyObject *arg3;
-  PyObject *arg4;
-
-  if (!PyArg_UnpackTuple(args, "swe_fixstar", 5, 5, &arg0, &arg1, &arg2, &arg3, &arg4))
-    return NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg0, (char **)&x0);
-  if (datasize != 0) {
-    x0 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg0, (char **)&x0,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  x1 = (double)_cffi_to_c_double(arg1);
-  if (x1 == (double)-1 && PyErr_Occurred())
-    return NULL;
-
-  x2 = _cffi_to_c_int(arg2, int);
-  if (x2 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(14), arg3, (char **)&x3);
-  if (datasize != 0) {
-    x3 = ((size_t)datasize) <= 640 ? (double *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(14), arg3, (char **)&x3,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg4, (char **)&x4);
-  if (datasize != 0) {
-    x4 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg4, (char **)&x4,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  Py_BEGIN_ALLOW_THREADS
-  _cffi_restore_errno();
-  { result = swe_fixstar(x0, x1, x2, x3, x4); }
-  _cffi_save_errno();
-  Py_END_ALLOW_THREADS
-
-  (void)self; /* unused */
-  pyresult = _cffi_from_c_int(result, int);
-  if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
-  return pyresult;
-}
-#else
-#  define _cffi_f_swe_fixstar _cffi_d_swe_fixstar
-#endif
-
-static int _cffi_d_swe_fixstar_ut(char * x0, double x1, int x2, double * x3, char * x4)
-{
-  return swe_fixstar_ut(x0, x1, x2, x3, x4);
-}
-#ifndef PYPY_VERSION
-static PyObject *
-_cffi_f_swe_fixstar_ut(PyObject *self, PyObject *args)
-{
-  char * x0;
-  double x1;
-  int x2;
-  double * x3;
-  char * x4;
-  Py_ssize_t datasize;
-  struct _cffi_freeme_s *large_args_free = NULL;
-  int result;
-  PyObject *pyresult;
-  PyObject *arg0;
-  PyObject *arg1;
-  PyObject *arg2;
-  PyObject *arg3;
-  PyObject *arg4;
-
-  if (!PyArg_UnpackTuple(args, "swe_fixstar_ut", 5, 5, &arg0, &arg1, &arg2, &arg3, &arg4))
-    return NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg0, (char **)&x0);
-  if (datasize != 0) {
-    x0 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg0, (char **)&x0,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  x1 = (double)_cffi_to_c_double(arg1);
-  if (x1 == (double)-1 && PyErr_Occurred())
-    return NULL;
-
-  x2 = _cffi_to_c_int(arg2, int);
-  if (x2 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(14), arg3, (char **)&x3);
-  if (datasize != 0) {
-    x3 = ((size_t)datasize) <= 640 ? (double *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(14), arg3, (char **)&x3,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg4, (char **)&x4);
-  if (datasize != 0) {
-    x4 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg4, (char **)&x4,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  Py_BEGIN_ALLOW_THREADS
-  _cffi_restore_errno();
-  { result = swe_fixstar_ut(x0, x1, x2, x3, x4); }
-  _cffi_save_errno();
-  Py_END_ALLOW_THREADS
-
-  (void)self; /* unused */
-  pyresult = _cffi_from_c_int(result, int);
-  if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
-  return pyresult;
-}
-#else
-#  define _cffi_f_swe_fixstar_ut _cffi_d_swe_fixstar_ut
 #endif
 
 static int _cffi_d_swe_houses(double x0, double x1, double x2, int x3, double * x4, double * x5)
@@ -1083,19 +774,19 @@ _cffi_f_swe_houses(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(14), arg4, (char **)&x4);
+      _cffi_type(12), arg4, (char **)&x4);
   if (datasize != 0) {
     x4 = ((size_t)datasize) <= 640 ? (double *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(14), arg4, (char **)&x4,
+    if (_cffi_convert_array_argument(_cffi_type(12), arg4, (char **)&x4,
             datasize, &large_args_free) < 0)
       return NULL;
   }
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(14), arg5, (char **)&x5);
+      _cffi_type(12), arg5, (char **)&x5);
   if (datasize != 0) {
     x5 = ((size_t)datasize) <= 640 ? (double *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(14), arg5, (char **)&x5,
+    if (_cffi_convert_array_argument(_cffi_type(12), arg5, (char **)&x5,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -1173,273 +864,12 @@ _cffi_f_swe_julday(PyObject *self, PyObject *args)
 #  define _cffi_f_swe_julday _cffi_d_swe_julday
 #endif
 
-static void _cffi_d_swe_revjul(double x0, int x1, int * x2, int * x3, int * x4, double * x5)
-{
-  swe_revjul(x0, x1, x2, x3, x4, x5);
-}
-#ifndef PYPY_VERSION
-static PyObject *
-_cffi_f_swe_revjul(PyObject *self, PyObject *args)
-{
-  double x0;
-  int x1;
-  int * x2;
-  int * x3;
-  int * x4;
-  double * x5;
-  Py_ssize_t datasize;
-  struct _cffi_freeme_s *large_args_free = NULL;
-  PyObject *arg0;
-  PyObject *arg1;
-  PyObject *arg2;
-  PyObject *arg3;
-  PyObject *arg4;
-  PyObject *arg5;
-
-  if (!PyArg_UnpackTuple(args, "swe_revjul", 6, 6, &arg0, &arg1, &arg2, &arg3, &arg4, &arg5))
-    return NULL;
-
-  x0 = (double)_cffi_to_c_double(arg0);
-  if (x0 == (double)-1 && PyErr_Occurred())
-    return NULL;
-
-  x1 = _cffi_to_c_int(arg1, int);
-  if (x1 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(57), arg2, (char **)&x2);
-  if (datasize != 0) {
-    x2 = ((size_t)datasize) <= 640 ? (int *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(57), arg2, (char **)&x2,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(57), arg3, (char **)&x3);
-  if (datasize != 0) {
-    x3 = ((size_t)datasize) <= 640 ? (int *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(57), arg3, (char **)&x3,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(57), arg4, (char **)&x4);
-  if (datasize != 0) {
-    x4 = ((size_t)datasize) <= 640 ? (int *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(57), arg4, (char **)&x4,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(14), arg5, (char **)&x5);
-  if (datasize != 0) {
-    x5 = ((size_t)datasize) <= 640 ? (double *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(14), arg5, (char **)&x5,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  Py_BEGIN_ALLOW_THREADS
-  _cffi_restore_errno();
-  { swe_revjul(x0, x1, x2, x3, x4, x5); }
-  _cffi_save_errno();
-  Py_END_ALLOW_THREADS
-
-  (void)self; /* unused */
-  if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
-  Py_INCREF(Py_None);
-  return Py_None;
-}
-#else
-#  define _cffi_f_swe_revjul _cffi_d_swe_revjul
-#endif
-
-static void _cffi_d_swe_set_ephe_path(char * x0)
-{
-  swe_set_ephe_path(x0);
-}
-#ifndef PYPY_VERSION
-static PyObject *
-_cffi_f_swe_set_ephe_path(PyObject *self, PyObject *arg0)
-{
-  char * x0;
-  Py_ssize_t datasize;
-  struct _cffi_freeme_s *large_args_free = NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg0, (char **)&x0);
-  if (datasize != 0) {
-    x0 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg0, (char **)&x0,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  Py_BEGIN_ALLOW_THREADS
-  _cffi_restore_errno();
-  { swe_set_ephe_path(x0); }
-  _cffi_save_errno();
-  Py_END_ALLOW_THREADS
-
-  (void)self; /* unused */
-  if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
-  Py_INCREF(Py_None);
-  return Py_None;
-}
-#else
-#  define _cffi_f_swe_set_ephe_path _cffi_d_swe_set_ephe_path
-#endif
-
-static int _cffi_d_swe_utc_to_jd(int x0, int x1, int x2, int x3, int x4, double x5, int x6, double * x7, char * x8)
-{
-  return swe_utc_to_jd(x0, x1, x2, x3, x4, x5, x6, x7, x8);
-}
-#ifndef PYPY_VERSION
-static PyObject *
-_cffi_f_swe_utc_to_jd(PyObject *self, PyObject *args)
-{
-  int x0;
-  int x1;
-  int x2;
-  int x3;
-  int x4;
-  double x5;
-  int x6;
-  double * x7;
-  char * x8;
-  Py_ssize_t datasize;
-  struct _cffi_freeme_s *large_args_free = NULL;
-  int result;
-  PyObject *pyresult;
-  PyObject *arg0;
-  PyObject *arg1;
-  PyObject *arg2;
-  PyObject *arg3;
-  PyObject *arg4;
-  PyObject *arg5;
-  PyObject *arg6;
-  PyObject *arg7;
-  PyObject *arg8;
-
-  if (!PyArg_UnpackTuple(args, "swe_utc_to_jd", 9, 9, &arg0, &arg1, &arg2, &arg3, &arg4, &arg5, &arg6, &arg7, &arg8))
-    return NULL;
-
-  x0 = _cffi_to_c_int(arg0, int);
-  if (x0 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  x1 = _cffi_to_c_int(arg1, int);
-  if (x1 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  x2 = _cffi_to_c_int(arg2, int);
-  if (x2 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  x3 = _cffi_to_c_int(arg3, int);
-  if (x3 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  x4 = _cffi_to_c_int(arg4, int);
-  if (x4 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  x5 = (double)_cffi_to_c_double(arg5);
-  if (x5 == (double)-1 && PyErr_Occurred())
-    return NULL;
-
-  x6 = _cffi_to_c_int(arg6, int);
-  if (x6 == (int)-1 && PyErr_Occurred())
-    return NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(14), arg7, (char **)&x7);
-  if (datasize != 0) {
-    x7 = ((size_t)datasize) <= 640 ? (double *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(14), arg7, (char **)&x7,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg8, (char **)&x8);
-  if (datasize != 0) {
-    x8 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg8, (char **)&x8,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  Py_BEGIN_ALLOW_THREADS
-  _cffi_restore_errno();
-  { result = swe_utc_to_jd(x0, x1, x2, x3, x4, x5, x6, x7, x8); }
-  _cffi_save_errno();
-  Py_END_ALLOW_THREADS
-
-  (void)self; /* unused */
-  pyresult = _cffi_from_c_int(result, int);
-  if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
-  return pyresult;
-}
-#else
-#  define _cffi_f_swe_utc_to_jd _cffi_d_swe_utc_to_jd
-#endif
-
-static char * _cffi_d_swe_version(char * x0)
-{
-  return swe_version(x0);
-}
-#ifndef PYPY_VERSION
-static PyObject *
-_cffi_f_swe_version(PyObject *self, PyObject *arg0)
-{
-  char * x0;
-  Py_ssize_t datasize;
-  struct _cffi_freeme_s *large_args_free = NULL;
-  char * result;
-  PyObject *pyresult;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1), arg0, (char **)&x0);
-  if (datasize != 0) {
-    x0 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1), arg0, (char **)&x0,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  Py_BEGIN_ALLOW_THREADS
-  _cffi_restore_errno();
-  { result = swe_version(x0); }
-  _cffi_save_errno();
-  Py_END_ALLOW_THREADS
-
-  (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1));
-  if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
-  return pyresult;
-}
-#else
-#  define _cffi_f_swe_version _cffi_d_swe_version
-#endif
-
 static const struct _cffi_global_s _cffi_globals[] = {
-  { "swe_calc", (void *)_cffi_f_swe_calc, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 25), (void *)_cffi_d_swe_calc },
-  { "swe_calc_pctr", (void *)_cffi_f_swe_calc_pctr, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 32), (void *)_cffi_d_swe_calc_pctr },
-  { "swe_calc_ut", (void *)_cffi_f_swe_calc_ut, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 25), (void *)_cffi_d_swe_calc_ut },
-  { "swe_close", (void *)_cffi_f_swe_close, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 62), (void *)_cffi_d_swe_close },
-  { "swe_fixstar", (void *)_cffi_f_swe_fixstar, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 10), (void *)_cffi_d_swe_fixstar },
-  { "swe_fixstar_ut", (void *)_cffi_f_swe_fixstar_ut, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 10), (void *)_cffi_d_swe_fixstar_ut },
-  { "swe_houses", (void *)_cffi_f_swe_houses, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 17), (void *)_cffi_d_swe_houses },
-  { "swe_julday", (void *)_cffi_f_swe_julday, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 3), (void *)_cffi_d_swe_julday },
-  { "swe_revjul", (void *)_cffi_f_swe_revjul, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 54), (void *)_cffi_d_swe_revjul },
-  { "swe_set_ephe_path", (void *)_cffi_f_swe_set_ephe_path, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 51), (void *)_cffi_d_swe_set_ephe_path },
-  { "swe_utc_to_jd", (void *)_cffi_f_swe_utc_to_jd, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 40), (void *)_cffi_d_swe_utc_to_jd },
-  { "swe_version", (void *)_cffi_f_swe_version, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 0), (void *)_cffi_d_swe_version },
+  { "get_SEFLG_SWIEPH", (void *)_cffi_f_get_SEFLG_SWIEPH, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 22), (void *)_cffi_d_get_SEFLG_SWIEPH },
+  { "get_SE_GREG_CAL", (void *)_cffi_f_get_SE_GREG_CAL, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 22), (void *)_cffi_d_get_SE_GREG_CAL },
+  { "swe_calc_ut", (void *)_cffi_f_swe_calc_ut, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 15), (void *)_cffi_d_swe_calc_ut },
+  { "swe_houses", (void *)_cffi_f_swe_houses, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 7), (void *)_cffi_d_swe_houses },
+  { "swe_julday", (void *)_cffi_f_swe_julday, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 0), (void *)_cffi_d_swe_julday },
 };
 
 static const struct _cffi_type_context_s _cffi_type_context = {
@@ -1449,12 +879,12 @@ static const struct _cffi_type_context_s _cffi_type_context = {
   NULL,  /* no struct_unions */
   NULL,  /* no enums */
   NULL,  /* no typenames */
-  12,  /* num_globals */
+  5,  /* num_globals */
   0,  /* num_struct_unions */
   0,  /* num_enums */
   0,  /* num_typenames */
   NULL,  /* no includes */
-  66,  /* num_types */
+  25,  /* num_types */
   0,  /* flags */
 };
 
