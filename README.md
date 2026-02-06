@@ -22,7 +22,7 @@ This project follows the versioning scheme: `<swe_major>.<swe_minor>.<swe_patch>
 
 `pysweph` links directly to the official [Swiss Ephemeris C library](https://github.com/aloistr/swisseph) maintained by Alois Treindl and Astrodienst.
 
-`pyswisseph` included the author's auxiliary repositories (`[swephelp](https://github.com/astrorigin/swephelp)`, `[sqlite3](https://github.com/astrorigin/sqlite3)`, and related utilities). These have been intentionally removed in `pysweph` to reduce complexity and depend only on the canonical Swiss Ephemeris source code.
+`pyswisseph` included the author's auxiliary repositories ([`swephelp`](https://github.com/astrorigin/swephelp), [`sqlite3`](https://github.com/astrorigin/sqlite3), and related utilities). These have been intentionally removed in `pysweph` to reduce complexity and depend only on the canonical Swiss Ephemeris source code.
 
 ## Changes in `pysweph`
 
@@ -41,15 +41,18 @@ This project follows the versioning scheme: `<swe_major>.<swe_minor>.<swe_patch>
 
 ## Installation
 
-`pysweph` is available directly from [PyPI](https://pypi.org/project/pysweph).
+Install from [PyPI](https://pypi.org/project/pysweph): `pip install pysweph`
 
-```sh
-uv pip install pysweph
-# or
-pip install pysweph
+Build from source:
+```
+git clone https://github.com/sailorfe/pysweph.git
+cd pysweph
+python3 -m venv .venv
+source .venv/bin/activate
+pip install .
 ```
 
-`pysweph` is a drop-in replacement for `pyswisseph` with the same import name:
+`pysweph` retains the same import name from `pyswisseph`:
 
 ```py
 import swisseph as swe
