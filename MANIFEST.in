@@ -1,5 +1,5 @@
 include CMakeLists.txt
-include LICENSE.txt
+include LICENSE
 include Makefile
 include README.md
 include pyproject.toml

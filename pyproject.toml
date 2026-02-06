@@ -12,7 +12,7 @@ dynamic = ["version"]
 description = "Community fork of Pyswisseph, a Python extension to the Swiss Ephemeris"
 readme = "README.md"
 requires-python = ">=3.8"
-license = "AGPL-3.0-or-later"
+license = { file = "LICENSE" }
 authors = [
     {name = "Stanislas Marquis", email = "stan@astrorigin.com"},
 ]
