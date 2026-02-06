@@ -6,8 +6,8 @@ sys.path.insert(0, os.path.abspath('..'))
 project = 'pysweph'
 copyright = '2007-23 Pyswisseph Authors, 2025-26 pysweph Contributors'
 author = 'pysweph Contributors (formerly Pyswisseph)'
-version = '2.10.3.3'
-release = '2.10.3.3'
+version = '2.10.3.4'
+release = '2.10.3.4'
 
 extensions = [
     'myst_parser',
