@@ -32,6 +32,12 @@ This project follows the versioning scheme: `<swe_major>.<swe_minor>.<swe_patch>
     * Includes original tutorials and conceptual guides intended for both astrologers and developers.
 - **C library parity**:
     * [2.10.3.3](https://github.com/sailorfe/pysweph/releases/tag/2.10.3.3): Exposed string errors in `swe.calc()`, `swe.calc_pctr()`, `swe.calc_ut()`, and `swe.deltat_ex()`.
+    * [2.10.3.4](https://github.com/sailorfe/pysweph/releases/tag/v2.10.3.4): The `swe_houses` function family now returns house cusps as a 13 or 37-item tuple where index 0 is empty.
+
+### Status
+
+- As of 2026-02-06, the test suite is deprecated due to `calc` and `houses` function patches.
+- A CFFI refactor is in progress: [cffi-rewrite](https://github.com/sailorfe/pysweph/tree/cffi-rewrite).
 
 ## Installation
 

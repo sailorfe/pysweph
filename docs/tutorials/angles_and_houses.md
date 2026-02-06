@@ -51,13 +51,13 @@ print(f"Midheaven: {ascmc[1]:.2f}")
 
 ### Explanation
 
-The most reliable way to access the angles (Ascendant and Midheaven) is to use the dedicated `ascmc` tuple.
+The most reliable way to access the angles (Ascendant and Midheaven) is to use the dedicated `ascmc` tuple..
 
 
 | Tuple name    | Length    | Contents                                                                      |
 | ------------- | --------- | ----------------------------------------------------------------------------- |
-| `cusps`       | 13        | Cusps for the 1st through 12th houses (index `1` to `12`; index `0` is empty) |
-| `ascmc`       | 8         | Ascendant, Midheaven, Vertex, Equatorial Ascendant, etc.  |
+| `cusps`       | 13 or 36  | Cusps for the 12 houses or 36 Gauquelin sectors where index 0 is empty        |
+| `ascmc`       | 8         | Ascendant, Midheaven, Vertex, Equatorial Ascendant, etc.                      |
 
 
 #### Accessing angles
