@@ -1,10 +1,6 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel", "setuptools-scm>=9"]
+requires = ["setuptools>=61.0", "wheel", "setuptools-scm>=9", "cmake"]
 build-backend = "setuptools.build_meta"
-
-[tool.setuptools_scm]
-version_scheme = "guess-next-dev"
-local_scheme = "no-local-version"
 
 [project]
 name = "pysweph"
@@ -46,3 +42,7 @@ Issues = "https://github.com/sailorfe/pysweph/issues"
 
 [tool.setuptools]
 packages = []
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"

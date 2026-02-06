@@ -30,16 +30,7 @@ swisseph.so
 
 venv/
 
-# debian
-.pybuild/
-debian/*.substvars
-debian/debhelper-build-stamp
-debian/files
-debian/python3-swisseph
-debian/python3-swisseph-doc
-debian/tmp
-debian/.debhelper
-
-# docs – uv env, sphinx live server
+# pysweph additions
 _site
 .venv
+wheelhouse/

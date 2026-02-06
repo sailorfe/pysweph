@@ -4,5 +4,8 @@ include Makefile
 include README.md
 include pyproject.toml
 graft docs
-graft libswe
 graft tests
+
+recursive-include libswe *.c *.h
+include libswe/Makefile
+prune libswe/.git
