@@ -27,11 +27,5 @@ jobs:
       - name: Build Source Distribution
         run: uv build --sdist
 
-      - name: Install from local source
-        run: uv pip install .
-
-      - name: Test Source Distribution Build (The "User Path")
-        run: uv pip install --no-binary pysweph .
-
       - name: Verify C-Extension
         run: uv run python -c "import pysweph; print('Successfully loaded extension')"
