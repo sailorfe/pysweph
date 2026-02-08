@@ -33,10 +33,12 @@ This project follows the versioning scheme: `<swe_major>.<swe_minor>.<swe_patch>
 - Includes original tutorials and conceptual guides intended for both astrologers and developers.
 
 #### C library parity
-- 🔧 [2.10.3.3](https://github.com/sailorfe/pysweph/releases/tag/2.10.3.3): Exposed string errors in `swe.calc()`, `swe.calc_pctr()`, `swe.calc_ut()`, and `swe.deltat_ex()`.
-- ⚠️ [2.10.3.4](https://github.com/sailorfe/pysweph/releases/tag/v2.10.3.4): The `swe_houses` function family now returns house cusps as a 13 or 37-item tuple where index 0 is empty. **This is a breaking change from `pyswisseph`**.
+> [!WARNING]
+> These include **breaking changes** from `pyswisseph`. The severity of each is documented in more detail in the [Migration Guide](docs/concepts/migration_guide.md).
 
-These changes are documented in more detail in the [Migration Guide](docs/tutorials/migration_guide).
+- [2.10.3.3](https://github.com/sailorfe/pysweph/releases/tag/2.10.3.3): Exposed string errors in `swe.calc()`, `swe.calc_pctr()`, `swe.calc_ut()`, and `swe.deltat_ex()`.
+- [2.10.3.4](https://github.com/sailorfe/pysweph/releases/tag/v2.10.3.4): The `swe_houses` function family now returns house cusps as a 13 or 37-item tuple where index 0 is empty. **This is a breaking change**.
+
 
 ### Future
 
@@ -62,7 +64,7 @@ pip install .
 import swisseph as swe
 ```
 
-The documentation includes a detailed `pyswisseph` to `pysweph` [Migration Guide](https://sailorfe.github.io/pysweph/concepts/migration_guide.html) for existing projects.
+The documentation includes a detailed `pyswisseph` to `pysweph` [Migration Guide](docs/concepts/migration_guide.md) for existing projects.
 
 ## Credits
 
