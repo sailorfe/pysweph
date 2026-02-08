@@ -56,7 +56,7 @@ The most reliable way to access the angles (Ascendant and Midheaven) is to use t
 
 | Tuple name    | Length    | Contents                                                                      |
 | ------------- | --------- | ----------------------------------------------------------------------------- |
-| `cusps`       | 13 or 36  | Cusps for the 12 houses or 36 Gauquelin sectors where index 0 is empty        |
+| `cusps`       | 13 or 37  | Cusps for the 12 houses or 36 Gauquelin sectors where index 0 is empty.       |
 | `ascmc`       | 8         | Ascendant, Midheaven, Vertex, Equatorial Ascendant, etc.                      |
 
 
@@ -70,11 +70,11 @@ In **quadrant house systems** like Placidus (used in this example), Campanus, Re
 - `ascmc[0]` (AC) should be the same as `cusps[1]` (1st house).
 - `ascmc[1]` (MC) may be *theoretically* the same as `cusps[10]` (10th house).
 
-It's generally best practice to still use the `ascmc` tuple for the Ascendant and Midheaven, which lie between two cusps in **Whole Sign Houses** and some **equal house systems**.
+It's generally best practice to still use the `ascmc` tuple for the Ascendant and Midheaven, which lie between two cusps in whole sign houses and some equal house systems
 
 ## Other house functions
 
-Besides [`swe.houses()`](../api/index.md#swisseph.houses), `pywisseph` also offers:
+Besides [`swe.houses()`](../api/index.md#swisseph.houses), `pysweph` also offers:
 
 - [`swe.houses_armc()`](../api/index.md#swisseph.houses_armc): Using the right ascension of the MC.
 - [`swe.houses_armc_ex2()`](../api/index.md#swisseph.houses_armc_ex2): House cusps with their speeds using ARMC.

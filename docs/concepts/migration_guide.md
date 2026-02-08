@@ -84,18 +84,45 @@ dependencies = [
 ]
 ```
 
-## Core changes
+## Changes
 
-The primary divergence in `pysweph` 2.10.3.3+ is a return to C-parity.
+The primary divergence in `pysweph` 2.10.3.3+ is a return to C-parity, which diverges from `pyswisseph` in subtle-to-breaking ways.
 
-### String errors
+### 🔧 `swe.calc` family string errors
 
 While `pyswisseph` attempted to hide C-style error handling, `pysweph` exposes it to ensure you know exactly why a calculation failed (e.g., `"SwissEph file 'sepl_18.se1' not found in PATH '/usr/share/swisseph:/usr/local/share/swisseph/' \nusing Moshier eph.; "`).
 
 
-| Function          | Legacy `pyswisseph` return    | New `pysweph` return      |
+| Function          | Legacy `pyswisseph` return    | New `pysweph>=2.10.3.3` return      |
 | ----------------- | ----------------------------- | ------------------------- |
 | `swe.calc()`      | `(int, retflags)`             | `(int, retflags, serr)`   |
 | `swe.calc_pctr`   | `(int, retflags)`             | `(int, retflags, serr)`   |
 | `swe.calc_ut()`   | `(int, retflags)`             | `(int, retflags, serr)`   |
 | `swe.deltat_ex()` | `(float)`                     | `(float, serr)`           |
+
+
+### ⚠️ `swe.houses` family `cusps` tuple
+
+```{warning}
+This is a **breaking change** with `pyswisseph`. If you mean to migrate, you will need time to rewrite any portions of your code that use the `cusps` outpuet of `swe.houses()`, `swe.houses_armc()`, `swe.houses_armc_ex2()`, `swe.houses_ex()`, or `swe.houses_ex2()`.
+```
+
+In the `houses` function family, Swiss Ephemeris indexes the house cusps or Gauquelin sectors in 13-item and 37-item arrays where index `0` is empty, which is logical for the domain of astrology. `pyswisseph` changed these to 12- and 36-item tuples, where index `0` was the first house cusp. `pysweph` restores the Swiss Ephemeris' empty `0` index.
+
+| House cusp [^1]   | `pyswisseph`  | `pysweph>=2.10.3.4`       |
+| ----------------- | ------------- | ------------------------- |
+| -                 | -             | `cusps[0]`                |
+| 1st               | `cusps[0]`    | `cusps[1]`                |
+| 2nd               | `cusps[1]`    | `cusps[2]`                |
+| 3rd               | `cusps[2]`    | `cusps[3]`                |
+| 4th               | `cusps[3]`    | `cusps[4]`                |
+| 5th               | `cusps[4]`    | `cusps[5]`                |
+| 6th               | `cusps[5]`    | `cusps[6]`                |
+| 7th               | `cusps[6]`    | `cusps[7]`                |
+| 8th               | `cusps[7]`    | `cusps[8]`                |
+| 9th               | `cusps[8]`    | `cusps[9]`                |
+| 10th              | `cusps[9]`    | `cusps[10]`               |
+| 11th              | `cusps[10]`   | `cusps[11]`               |
+| 12th              | `cusps[11]`   | `cusps[12]`               |
+
+[^1]: For every house system but Gauquelin (71 or `b'G'`).

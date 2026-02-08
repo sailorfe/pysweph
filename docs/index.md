@@ -4,7 +4,7 @@
 
 **New to `pysweph`?** Start with [Installation](installation.md) and [Quickstart](quickstart.md).
 
-**Moving from `pyswisseph`**? Visit the [Migration Guide](concepts/migration_guide.md)
+**Moving from `pyswisseph`**? Visit the [Migration Guide](concepts/migration_guide.md) to review any **breaking changes**.
 
 **Building an astrology app?** Check out the [Tutorials](tutorials/index.md).
 

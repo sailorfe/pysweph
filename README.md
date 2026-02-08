@@ -24,17 +24,21 @@ This project follows the versioning scheme: `<swe_major>.<swe_minor>.<swe_patch>
 
 `pyswisseph` included the author's auxiliary repositories ([`swephelp`](https://github.com/astrorigin/swephelp), [`sqlite3`](https://github.com/astrorigin/sqlite3), and related utilities). These have been intentionally removed in `pysweph` to reduce complexity and depend only on the canonical Swiss Ephemeris source code.
 
-## Changes in `pysweph`
+## Status
 
-- [**Documentation**](https://sailorfe.github.io/pysweph):
-    * Rebuilt with Sphinx and MyST Markdown, hosted on GitHub Pages with continuous integration via GitHub Actions.
-    * Generated API reference directly from `pyswisseph.c` docstrings with `sphinx-autodoc`.
-    * Includes original tutorials and conceptual guides intended for both astrologers and developers.
-- **C library parity**:
-    * [2.10.3.3](https://github.com/sailorfe/pysweph/releases/tag/2.10.3.3): Exposed string errors in `swe.calc()`, `swe.calc_pctr()`, `swe.calc_ut()`, and `swe.deltat_ex()`.
-    * [2.10.3.4](https://github.com/sailorfe/pysweph/releases/tag/v2.10.3.4): The `swe_houses` function family now returns house cusps as a 13 or 37-item tuple where index 0 is empty.
+### Changes
+#### [Documentation](https://sailorfe.github.io/pysweph)
+- Rebuilt with Sphinx and MyST Markdown, hosted on GitHub Pages with continuous integration via GitHub Actions.
+- Generated API reference directly from `pyswisseph.c` docstrings with `sphinx-autodoc`.
+- Includes original tutorials and conceptual guides intended for both astrologers and developers.
 
-### Status
+#### C library parity
+- 🔧 [2.10.3.3](https://github.com/sailorfe/pysweph/releases/tag/2.10.3.3): Exposed string errors in `swe.calc()`, `swe.calc_pctr()`, `swe.calc_ut()`, and `swe.deltat_ex()`.
+- ⚠️ [2.10.3.4](https://github.com/sailorfe/pysweph/releases/tag/v2.10.3.4): The `swe_houses` function family now returns house cusps as a 13 or 37-item tuple where index 0 is empty. **This is a breaking change from `pyswisseph`**.
+
+These changes are documented in more detail in the [Migration Guide](docs/tutorials/migration_guide).
+
+### Future
 
 - As of 2026-02-06, the test suite is deprecated due to `calc` and `houses` function patches.
 - A CFFI refactor is in progress: [cffi-rewrite](https://github.com/sailorfe/pysweph/tree/cffi-rewrite).
@@ -44,7 +48,7 @@ This project follows the versioning scheme: `<swe_major>.<swe_minor>.<swe_patch>
 Install from [PyPI](https://pypi.org/project/pysweph): `pip install pysweph`
 
 Build from source:
-```
+```sh
 git clone https://github.com/sailorfe/pysweph.git
 cd pysweph
 python3 -m venv .venv
