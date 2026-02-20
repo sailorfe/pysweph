@@ -1,5 +1,15 @@
-# pysweph
+# [experiment] pysweph CFFI rewrite
 
-`pysweph` is a community fork of [`pyswisseph`](https://github.com/astrorigin/pyswisseph), a Python extension to the [Swiss Ephemeris](https://www.astro.com/swisseph/swephinfo_e.htm).
+> [!CAUTION]
+**This branch is not a functional library.** It is an orphan branch with scaffolding for a long-term, solo CFFI refactor. Commits may not be pushed for weeks or months at a time.
 
-This branch is a WIP rebinding [Swiss Ephemeris 2.10.03](https://github.com/aloistr/swisseph/releases/tag/v2.10.03) with [CFFI](https://github.com/python-cffi/cffi/) rather than the original CPython for improved maintainability, closer parity with the C library, and modern PyPI packaging practices.
+- **Do NOT use this.** As of writing, only three of 86 Swiss Ephemeris functions have been bound.
+- **Do not report bugs**. If a function is missing or broken, I am aware.
+- **Namespace change**: To separate from Pyswisseph, the import name of this rewrite will be `import sweph`.
+- **Versioning**: Once feature-complete, releases will start from `pysweph==0.1.0`.
+
+## Why
+
+The purpose of this work is to replace the legacy CPython extensions with CFFI, resolving drift from the upstream C library's bindings.
+
+[**Return to the default branch for stable**](https://github.com/sailorfe/pysweph).
