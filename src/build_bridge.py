@@ -44,7 +44,7 @@ ffibuilder.set_source("_pysweph",
 )
 
 if __name__ == "__main__":
-    package_dir = BASE_DIR / "swisseph"
+    package_dir = BASE_DIR / "sweph"
     os.chdir(str(package_dir))
     ffibuilder.compile(target="./_pysweph.*", verbose=True)
     print(f"binary successfully generated in {package_dir}!")
