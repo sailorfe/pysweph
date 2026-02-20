@@ -5,4 +5,4 @@ docs/_build
 .venv
 *.egg-info
 __pycache__
-src/swisseph/WHAT_IS_C.md
+src/sweph/WHAT_IS_C.md
