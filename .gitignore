@@ -1,5 +1,8 @@
+build
+dist
+docs/_build
 *.pyc
 .venv
-src/*.egg-info
+*.egg-info
 __pycache__
 src/swisseph/WHAT_IS_C.md

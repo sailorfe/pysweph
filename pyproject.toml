@@ -8,7 +8,7 @@ dynamic = ["version"]
 description = "Community fork of Pywisseph, a Python wrapper for the Swiss Epphmeris."
 readme = "README.md"
 requires-python = ">=3.13"
-license = "AGPL-3.0-or-later"
+license = { file = "LICENSE" }
 authors = [
     { name = "sailorfe", email = "hello@sailorfe.dev" },
 ]
@@ -37,7 +37,7 @@ Issues = "https://github.com/sailorfe/pysweph/issues"
 "Original Project" = "https://github.com/astrorigin/pyswisseph"
 
 [tool.setuptools]
-packages = ["swisseph"]
+packages = ["sweph"]
 package-dir = {"" = "src"}
 
 [tools.setuptools.package-data]
